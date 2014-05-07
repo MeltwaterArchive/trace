@@ -1,7 +1,7 @@
 /*global require: false, define: false, window: false, requirejs: true, toString: true */
 
 define([
-	'../lib/d3',
+	'd3',
 	'./base'
 ], function (d3, Trace) {
 

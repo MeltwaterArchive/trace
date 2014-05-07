@@ -1,13 +1,10 @@
 /*global require: false, define: false, window: false, requirejs: true */
 
-define([
-	'./trace/LineGraph',
-	'./trace/BarChart'
-], function (LineGraph, BarChart) {
+define(function (require) {
 	'use strict';
 
 	return {
-		lineGraph: LineGraph,
-		barChart: BarChart
+		lineGraph: require('./trace/LineGraph'),
+		barChart: require('./trace/BarChart')
 	};
 });

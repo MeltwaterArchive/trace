@@ -1,13 +1,7 @@
-//Copyright 2012, etc.
-
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        // AMD.
-        define(['jquery', 'underscore'], factory);
+        define(['d3'], factory);
     } else {
-        // Browser globals
-        root.principium = factory(root.$, root._);
+        root.Trace = factory(root.d3);
     }
-}(this, function ($, _) {
-
-
+}(this, function (d3) {
