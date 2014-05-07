@@ -180,12 +180,14 @@ define([
 	// private methods
 	Trace.prototype._build = function () {
 
+		var format = d3.format('.2s');
+
 		// xaxis
 		if (this.options.showx) {
 			this.xaxis = this.chart.append('g')
 				.attr('class', 'trace-xaxis')
 				.attr('transform', 'translate(0,' + (this.options.height - this.options.margin[0] - this.options.margin[2]) + ')')
-				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(d3.time.format('%H:%M')));
+				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(format));
 		}
 
 		// yaxis
@@ -193,7 +195,7 @@ define([
 			this.yaxis = this.chart.append('g')
 				.attr('class', 'trace-yaxis')
 				.attr('transform', 'translate(0,0)')
-				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(d3.format('.2s')));
+				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(format));
 		}
 
 		// gridline

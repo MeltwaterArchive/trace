@@ -90,6 +90,16 @@
 				}
 			});
 
+			var simple = new Trace.barChart({
+				'div': '#simple',
+				'margin': [10, 10, 50, 30],
+				'width': 500,
+				'height': 250,
+				'data': {
+					'a': [[1,1], [2,2], [3,3]]
+				}
+			});
+
 			setInterval(function () {
 
 				var aa = random(10),
@@ -133,6 +143,8 @@
 			<h3>Stacked Bar Chart</h3>
 			<div id="stackedbar"></div>
 
+			<h3>Simpe Chart</h3>
+			<div id="simple"></div>
 
 		</div>
 

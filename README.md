@@ -38,7 +38,7 @@ these values will need to be adjusted to fit in the axis values
 In addition to the standard options that are available with Trace there these specific line graph options:
 
 - **showx**: Show or hide the X axis, defaults to `true`
-- **showy**: Show or hide the Y axis, defualts to `true`
+- **showy**: Show or hide the Y axis, defaults to `true`
 - **showpoints**: Show the points on the line
 - **interpolate**: Type of line interpolation (whether it's curved or straight) see https://github.com/mbostock/d3/wiki/SVG-Shapes#line_interpolate 
 
@@ -51,11 +51,11 @@ In addition to the standard options that are available with Trace there these sp
 In addition to the standard options that are available with Trace there these specific bar chart options:
 
 - **showx**: Show or hide the X axis, defaults to `true`
-- **showy**: Show or hide the Y axis, defualts to `true`
+- **showy**: Show or hide the Y axis, defaults to `true`
 
 ## Updating/animating a chart
 
-Charts can be updated using the `update` method which takes in a new data set. The chart will animate between the old and new dataset over 100 milliseconds.
+Charts can be updated using the `update` method which takes in a new data set. The chart will tween between the old and new dataset over 100 milliseconds.
 
     var graph = Trace.barChart({
     	data: {'Example': [[1,1], [2,2], [3,3]]}
