@@ -127,6 +127,8 @@ define([
 			.attr('class', 'trace-linegraph')
 			.attr('height', height)
 			.attr('width', width)
+			.attr('viewbox', '0 0 ' + width + ' ' + height)
+			.attr('perserveAspectRatio', "xMinYMid")
 			.append('g')
 			.attr('transform', 'translate(' + margin[3] + ',' + (margin[0])+ ')');
 

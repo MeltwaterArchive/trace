@@ -114,6 +114,8 @@ define([
 			.attr('class', 'trace-barchart')
 			.attr('width', width)
 			.attr('height', height)
+			.attr('viewbox', '0 0 ' + width + ' ' + height)
+			.attr('perserveAspectRatio', "xMinYMid")
 			.append('g')
 			.attr('transform', 'translate(' + margin[3] + ',' + (margin[0])+ ')');
 
