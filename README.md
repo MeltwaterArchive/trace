@@ -48,3 +48,24 @@ In addition to the standard options that are available with Trace there these sp
 
 - **showx**: Show or hide the X axis, defaults to `true`
 - **showy**: Show or hide the Y axis, defualts to `true`
+
+## Updating/animating a chart
+
+Charts can be updated using the `update` method which takes in a new data set. The chart will animate between the old and new dataset over 100 milliseconds.
+
+    var graph = Trace.barChart({
+    	data: {'Example': [[1,1], [2,2], [3,3]]}
+    });
+
+    graph.update({'Example': [[1,2], [2,3], [3,4]]})
+
+## Formatting Tooltips
+
+The parameter allows you to easily format the tooltips. The function is passed an arr with the first index being the `x` value and the second being the `y` value.
+
+     new Trace.lineGraph({
+		data: {'Example': [[1,1], [2,2], [3,3]]},
+		tooltips: function (vals) {
+			return 'x:' + vals[0] + ' y:' + vals[1];
+		}
+     });
