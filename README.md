@@ -33,6 +33,8 @@ these values will need to be adjusted to fit in the axis values
 
 `new Trace.lineGraph(options)`
 
+![LineGraph](http://cl.ly/image/0z0M0T430Q2O/download/Screen%20Shot%202014-05-07%20at%2009.58.19.png)
+
 In addition to the standard options that are available with Trace there these specific line graph options:
 
 - **showx**: Show or hide the X axis, defaults to `true`
@@ -42,9 +44,11 @@ In addition to the standard options that are available with Trace there these sp
 
 ### Bar Chart
 
-In addition to the standard options that are available with Trace there these specific bar chart options:
-
 `new Trace.barChart(options)`
+
+![BarChart](http://cl.ly/image/3r0a2e232W1v/download/Screen%20Shot%202014-05-07%20at%2009.58.27.png)
+
+In addition to the standard options that are available with Trace there these specific bar chart options:
 
 - **showx**: Show or hide the X axis, defaults to `true`
 - **showy**: Show or hide the Y axis, defualts to `true`
