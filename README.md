@@ -28,6 +28,8 @@ Where options is an object:
 - **margin**: Margin around the graph [top, right, bottom, left] if you choose to have axis,
 these values will need to be adjusted to fit in the axis values
 - **colors**: An `Array` of hex colours
+- **xTickFormat**: Format the ticks on the xaxis see [d3 format](https://github.com/mbostock/d3/wiki/Formatting#d3_format)
+- **yTickFormat**: Format the ticks on the yaxis see [d3 format](https://github.com/mbostock/d3/wiki/Formatting#d3_format)
 
 ### Line Graph
 
@@ -73,3 +75,7 @@ The parameter allows you to easily format the tooltips. The function is passed a
 			return 'x:' + vals[0] + ' y:' + vals[1];
 		}
      });
+
+ ## Formatting Axis Labels
+
+ You can format the ticks on the x and y axis by using `xTickFormat` and `yTickFormat` respectively. Please read the d3 documentation on the [format of string](https://github.com/mbostock/d3/wiki/Formatting#d3_format) also see `d3.time.format` for formatting where x or y is a time series.
