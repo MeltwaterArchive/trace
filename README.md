@@ -1,11 +1,11 @@
 # Trace
 
-Trace is a dynamic JavaScript charting library which utilises (d3)[http://d3js.org]. It supports a wide
+Trace is a dynamic JavaScript charting library which utilises [d3](http://d3js.org). It supports a wide
 variety of data and is easily extensible with new graph types.
 
 ## Usage
 
-Trace is very easy to use, it has one depency on (d3)[http://d3js.org].
+Trace is very easy to use, it has one depency on [d3](http://d3js.org).
 
 You can load Trace in one of two ways, firstly include the compressed `trace-min` file in your script tag. Or secondly load Trace in a AMD compatiable enviroment such as requireJs `require(['path-to-trace-min.js'], ...)`.
 
