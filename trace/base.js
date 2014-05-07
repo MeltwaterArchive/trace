@@ -57,6 +57,8 @@ define([
 			legend: true,
 			gridlines: true,
 			margin: [20,20,20,20],
+			xTickFormatter: d3.format('.2s'),
+			yTickFormatter: d3.format('.2s'),
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
 
@@ -139,11 +141,11 @@ define([
 
 	Trace.prototype._tick = function () {
 		if (this.xaxis) {
-			this.xaxis.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(d3.time.format('%H:%M')));
+			this.xaxis.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(this.options.xTickFormat));
 		}
 
 		if (this.yaxis) {
-			this.yaxis.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(d3.format('.2s')));
+			this.yaxis.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(this.options.yTickFormat));
 		}
 
 		if (this.options.gridlines) {
@@ -163,7 +165,7 @@ define([
 		this.tooltip.style.left = ( d3.event.clientX) + 'px';
 		this.tooltip.style.top = (d3.event.clientY) + 'px';
 		document.body.appendChild(this.tooltip);
-	},
+	};
 
 	/**
 	 * Just remove the tooltip when we mouse out
@@ -175,19 +177,17 @@ define([
 	 */
 	Trace.prototype._mouseout = function (evt) {
 		this.tooltip.parentNode.removeChild(this.tooltip);
-	},
+	};
 
 	// private methods
 	Trace.prototype._build = function () {
-
-		var format = d3.format('.2s');
 
 		// xaxis
 		if (this.options.showx) {
 			this.xaxis = this.chart.append('g')
 				.attr('class', 'trace-xaxis')
 				.attr('transform', 'translate(0,' + (this.options.height - this.options.margin[0] - this.options.margin[2]) + ')')
-				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(format));
+				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(this.options.xTickFormat));
 		}
 
 		// yaxis
@@ -195,7 +195,7 @@ define([
 			this.yaxis = this.chart.append('g')
 				.attr('class', 'trace-yaxis')
 				.attr('transform', 'translate(0,0)')
-				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(format));
+				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(this.options.yTickFormat));
 		}
 
 		// gridline
