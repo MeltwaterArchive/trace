@@ -37,3 +37,43 @@
 	width:0;
 	height:0;
 }
+
+.trace-legend .label {
+	overflow: hidden;
+}
+
+.trace-legend .selector {
+	background: #f9f9f9;
+	border: 1px solid #c7c7c7;
+	border-radius: 3px;
+	padding: 4px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.trace-legend .selector:before {
+	content: ' ';
+	background: #FFF;
+	border: 1px solid #c7c7c7;
+	height: 12px;
+	width: 12px;
+	border-radius: 1px;
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+
+.trace-legend .selector.selected:before {
+	content: 'X';
+}
+
+.trace-legend .key { 
+	border-left: 12px solid; 
+	padding-left: 5px; 
+	height: 14px;
+	line-height: 12px; 
+	display: block; 
+	float: left; 
+	color: #34495e;
+	font-size: 11px;
+}

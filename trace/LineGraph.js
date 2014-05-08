@@ -162,7 +162,7 @@ define([
 					.data(this.options.data[series])
 				.enter().append('circle')
 					.attr('fill', color)
-					.attr('class', 'trace-point')
+					.attr('class', 'trace-' + series)
 					.attr('cx', function (d, i) { return this.xfunc(d[0]); }.bind(this))
 					.attr('cy', function (d, i) { return this.yfunc(d[1]); }.bind(this))
 					.attr('r', function (d, i) { return 3; })

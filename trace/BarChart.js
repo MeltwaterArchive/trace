@@ -55,7 +55,7 @@ define([
 		// sort the data so it's indexed by x
 		this.mappedData = Object.keys(this.options.data).map(function (series, i) {
 			return this.options.data[series].map(function (d, ii) {
-				return { x: d[0], y: +d[1] };
+				return { x: d[0], y: +d[1], series: series };
 			});
 		}.bind(this));
 
@@ -137,6 +137,7 @@ define([
 			.attr("y", function (d) { return this.yfunc(d.y + d.y0); }.bind(this))
             .attr("height", function (d) { return this.yfunc(d.y0) - this.yfunc(d.y + d.y0); }.bind(this))
             .attr('width', this.xfunc.rangeBand())
+            .attr('class', function (d) { return 'trace-' + d.series; })
             .on('mouseover', this._mouseover.bind(this))
 			.on('mouseout', this._mouseout.bind(this));
 	};

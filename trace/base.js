@@ -226,7 +226,41 @@ define([
 		}
 	};
 
-	Trace.prototype._legend = function () {};
+	Trace.prototype._legend = function () {
+
+
+		var series = Object.keys(this.options.data);
+
+		var legend = d3.select(this.options.div)
+			.append('div')
+			.attr('class', 'trace-legend')
+			.selectAll('div.label')
+				.data(series)
+			.enter()
+				.append('div')
+				.attr('class', 'label')
+				.html(function (d, i) {
+					return '<div class="selector selected"><span class="key" style="border-left-color:' + this.colors(i) + ';">' + d + '</span></div>';
+				}.bind(this))
+				.on('click', function (e) {
+
+					var target = d3.event.target;
+
+					while (!target.classList.contains('selector')) {
+						target = target.parentNode;
+					}
+
+					target.classList.toggle('selected');
+
+					this.chart.selectAll('.trace-' + e)
+						.style('display', target.classList.contains('selected') ? 'block' : 'none');
+
+
+
+				}.bind(this));
+
+
+	};
 
 	return Trace;
 });
