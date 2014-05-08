@@ -55,7 +55,6 @@ define([
 				return JSON.stringify(evt);
 			},
 			legend: true,
-			gridlines: true,
 			margin: [20,20,20,20],
 			xTickFormatter: d3.format('.2s'),
 			yTickFormatter: d3.format('.2s'),
@@ -162,8 +161,8 @@ define([
 		this.tooltip = document.createElement('div');
 		this.tooltip.className = 'trace-tooltip';
 		this.tooltip.innerHTML = this.options.tooltips(evt);
-		this.tooltip.style.left = ( d3.event.clientX) + 'px';
-		this.tooltip.style.top = (d3.event.clientY) + 'px';
+		this.tooltip.style.left = (d3.event.clientX + window.scrollX) + 'px';
+		this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
 		document.body.appendChild(this.tooltip);
 	};
 

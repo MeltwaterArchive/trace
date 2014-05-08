@@ -100,6 +100,16 @@
 				}
 			});
 
+			var pie = new Trace.pieChart({
+				'div': '#pie',
+				'margin': [10, 10, 10, 10],
+				'width': 300,
+				'height': 300,
+				'data': {
+					'a': aa
+				}
+			});
+
 			setInterval(function () {
 
 				var aa = random(10),
@@ -120,6 +130,10 @@
 					"a": aa,
 					"b": bb,
 					"c": cc
+				});
+
+				pie.update({
+					"a": aa
 				});
 
 			}, 1000);
@@ -143,8 +157,11 @@
 			<h3>Stacked Bar Chart</h3>
 			<div id="stackedbar"></div>
 
-			<h3>Simpe Chart</h3>
+			<h3>Simple Chart</h3>
 			<div id="simple"></div>
+
+			<h3>Pie Chart</h3>
+			<div id="pie"></div>
 
 		</div>
 

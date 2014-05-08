@@ -5,6 +5,7 @@ define(function (require) {
 
 	return {
 		lineGraph: require('./trace/LineGraph'),
-		barChart: require('./trace/BarChart')
+		barChart: require('./trace/BarChart'),
+		pieChart: require('./trace/PieChart')
 	};
 });

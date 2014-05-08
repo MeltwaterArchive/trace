@@ -33,6 +33,7 @@ define([
 		this.options.showy = true;
 		this.options.showpoints = true;
 		this.options.interpolate = 'linear';
+		this.options.gridlines = true;
 
 		this.lines = {};
 		this.paths = {};

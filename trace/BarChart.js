@@ -27,6 +27,7 @@ define([
 		Trace.call(this, options);
 		this.options.showx = true;
 		this.options.showy = true;
+		this.options.gridlines = true;
 		this._build();
 	};
 
