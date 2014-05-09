@@ -46,7 +46,6 @@ define([
 	var Trace = function (options) {
 
 		this.options = {
-			// keys of series to arrays of [x,y] datapoints
 			data: {},
 			points: true,
 			width: 500,
@@ -60,13 +59,6 @@ define([
 			yTickFormatter: d3.format('.2s'),
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
-
-		// extend the default options
-		for (var key in options) {
-			if (options.hasOwnProperty(key)) {
-				this.options[key] = options[key];
-			}
-		}
 
 		// convert the colour scale
 		this.colorScale = d3.scale.ordinal().range(this.options.colors);
@@ -117,6 +109,15 @@ define([
 	Trace.prototype.colors = function (i) {
 		return this.colorScale(i);
 	};
+
+	Trace.prototype._extend = function (destination) {
+		Array.prototype.slice.call(arguments, 1).forEach(function (source) {
+			for (var prop in source) {
+				destination[prop] = source[prop];
+			}
+		});
+		return destination;
+	}
 
 	/**
 	 * Get the extremes of the data range

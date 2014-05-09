@@ -27,13 +27,20 @@ define([
 	 */
 	var LineGraph = function (options) {
 
-		Trace.call(this, options);
+		Trace.call(this);
 
-		this.options.showx = true;
-		this.options.showy = true;
-		this.options.showpoints = true;
-		this.options.interpolate = 'linear';
-		this.options.gridlines = true;
+		this._extend(this.options, {
+			showx: true,
+			showy: true,
+			showpoints: true,
+			interpolate: 'linear',
+			gridlines: true
+		}, options);
+
+
+		
+
+		
 
 		this.lines = {};
 		this.paths = {};

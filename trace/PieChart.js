@@ -27,7 +27,9 @@ define([
 	 */
 	var PieChart = function (options) {
 
-		Trace.call(this, options);
+		Trace.call(this);
+
+		this._extend(this.options, options);
 
 		this._build();
 	};

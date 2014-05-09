@@ -24,10 +24,14 @@ define([
 	 * @param {[type]} options [description]
 	 */
 	var BarChart = function (options) {
-		Trace.call(this, options);
-		this.options.showx = true;
-		this.options.showy = true;
-		this.options.gridlines = true;
+		Trace.call(this);
+
+		this._extend(this.options, {
+			showx: true,
+			showy: true,
+			gridlines: true
+		}, options);
+
 		this._build();
 	};
 
