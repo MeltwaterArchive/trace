@@ -59,9 +59,6 @@ define([
 			yTickFormatter: d3.format('.2s'),
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
-
-		// convert the colour scale
-		this.colorScale = d3.scale.ordinal().range(this.options.colors);
 	};
 
 	/**
@@ -107,6 +104,10 @@ define([
 	 * @param  {Int} i The current item
 	 */
 	Trace.prototype.colors = function (i) {
+		if (!this.colorScale) {
+			// convert the colour scale
+			this.colorScale = d3.scale.ordinal().range(this.options.colors);
+		}
 		return this.colorScale(i);
 	};
 
