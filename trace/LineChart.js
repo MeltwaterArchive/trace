@@ -37,12 +37,8 @@ define([
 			gridlines: true
 		}, options);
 
-
-		
-
-		
-
 		this.lines = {};
+		this.areas = {};
 		this.paths = {};
 		this.points = {};
 		this.series = [];
@@ -150,6 +146,11 @@ define([
 					return value[1] ? this.yfunc(value[1]) : this.yfunc(0); 
 				}.bind(this))
 				.interpolate(this.options.interpolate);
+
+			this.areas[s] = d3.svg.area()
+				.x(function (d) { return this.xfunc(d[0]); }.bind(this))
+    			.y0(height - margin[0] - margin[2])
+    			.y1(function (d) { return this.yfunc(d[1]); }.bind(this));
 		}.bind(this));
 
 		// now draw each of the lines
@@ -163,6 +164,13 @@ define([
 				.attr('stroke-width', '2px')
 				.attr('fill', 'none');
 
+			this.chart.append('path')
+				.datum(this.options.data[series])
+				.attr('class', 'area')
+				.attr('d', this.areas[series])
+				.attr('fill', color)
+				.attr('opacity', 0.2);
+
 			// draw the points
 			if (this.options.showpoints) {
 				this.points[series] = this.chart.selectAll('.point')
@@ -173,8 +181,6 @@ define([
 					.attr('cx', function (d, i) { return this.xfunc(d[0]); }.bind(this))
 					.attr('cy', function (d, i) { return this.yfunc(d[1]); }.bind(this))
 					.attr('r', function (d, i) { return 3; })
-					.attr('data-value', function (d) { return JSON.stringify(d); })
-					.attr('data-tooltip', function () { return this.options.tooltips; }.bind(this))
 					.on('mouseover', this._mouseover.bind(this))
 					.on('mouseout', this._mouseout.bind(this));
 			}

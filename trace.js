@@ -4,8 +4,10 @@ define(function (require) {
 	'use strict';
 
 	return {
-		lineGraph: require('./trace/LineGraph'),
+		lineChart: require('./trace/LineChart'),
 		barChart: require('./trace/BarChart'),
-		pieChart: require('./trace/PieChart')
+		pieChart: require('./trace/PieChart'),
+		likert: require('./trace/Likert'),
+		choropleth: require('./trace/Choropleth')
 	};
 });

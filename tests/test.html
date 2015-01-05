@@ -40,7 +40,9 @@
 				}
 			});
 
-			require(['../trace'], function (Trace) {
+		require(['../trace'], function (Trace) {
+
+			console.log(Trace);
 
 			var random = function (length) {
 				var arr = [];
@@ -55,7 +57,7 @@
 				bb = random(10),
 				cc = random(10);
 
-			var l = new Trace.lineGraph({
+			/*var l = new Trace.lineGraph({
 				'div': '#line',
 				'margin': [10, 10, 50, 30],
 				'width': 500,
@@ -101,9 +103,21 @@
 				'data': {
 					'a': [[1,1], [2,2], [3,3]]
 				}
+			});*/
+
+			var likert = new Trace.likert({
+				'div': '#likert',
+				'margin': [50, 50, 50, 50],
+				'width': 600,
+				'height': 400,
+				'data': {
+					"a": aa,
+					"b": bb,
+					"c": cc
+				}
 			});
 
-			var pie = new Trace.pieChart({
+			/*var pie = new Trace.pieChart({
 				'div': '#pie',
 				'margin': [10, 10, 10, 10],
 				'width': 300,
@@ -113,7 +127,7 @@
 				}
 			});
 
-			/*setInterval(function () {
+			setInterval(function () {
 
 				var aa = random(10),
 					bb = random(10),
@@ -150,6 +164,9 @@
 			<p>Trace is a JavaScript charting library based off D3.</p>
 
 			<h2>Examples</h2>
+
+			<h3>Likert Chart</h3>
+			<div id="likert"></div>
 
 			<h3>Line Chart</h3>
 			<div id="line"></div>

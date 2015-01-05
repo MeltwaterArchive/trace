@@ -43,9 +43,12 @@ define([
 	PieChart.prototype.constructor = PieChart;
 
 	PieChart.prototype._calculate = function () {
-		this.pieData = this.options.data[Object.keys(this.options.data)[0]].map(function (m) {
-			return m[1];
-		});
+		this.pieData = Object.keys(this.options.data).map(function (key) {
+			return {
+				'value': this.options.data[key],
+				'label': key
+			};
+		}.bind(this));
 	};
 
 	PieChart.prototype._tick = function () {
@@ -54,7 +57,7 @@ define([
 		this._calculate();
 		var arc = this.arc;
 
-		this.arcs.data(this.pie(this.pieData))
+		this.arcs.data(this.pie(this.pieData, function (d) { return d.value; }))
 			.transition()
 			.ease('linear')
 			.duration(100)
@@ -78,21 +81,31 @@ define([
 
 		var margin = this.options.margin,
 			height = this.options.height,
-			width = this.options.width;
+			width = this.options.width,
+			radius = (width - margin[1] - margin[3]) / 2;
 
-		this.pie = d3.layout.pie().sort(null);
-		this.radius = (width - margin[1] - margin[3]) / 2;
-		this.arc = d3.svg.arc().innerRadius(this.radius - (this.radius / 2)).outerRadius(this.radius);
+		if ((height - margin[0] - margin[2]) / 2 < radius) {
+			radius = (height - margin[0] - margin[2]) / 2;
+		}
+
+		var center = (width - (radius*2) - margin[1] - margin[3]) / 2;
+
+		this.pie = d3.layout.pie().value(function (d) {
+			return d.value;
+		});
+		this.arc = d3.svg.arc().outerRadius(radius);
 
 		this.chart = d3.select(this.options.div)
 			.append('svg')
 			.attr('width', width)
 			.attr('height', height)
 			.attr('viewbox', '0 0 ' + width + ' ' + height)
-			.attr('perserveAspectRatio', "xMinYMid")
+			.attr('perserveAspectRatio', 'xMinYMid')
 			.attr('class', 'trace-pie')
 			.append('g')
-				.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+				.attr('transform', 'translate(' + (margin[3] + radius + center) + ',' + (margin[0] + radius) + ')');
+
+		Trace.prototype._build.call(this);
 
 		this.arcs = this.chart.selectAll('path')
 			.data(this.pie(this.pieData))
@@ -118,8 +131,6 @@ define([
 	PieChart.prototype._build = function () {
 		this._calculate();
 		this._draw();
-		// call the parent method
-		Trace.prototype._build.call(this);
 	};
 
 	return PieChart;
