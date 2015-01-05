@@ -55,8 +55,8 @@ define([
 			},
 			legend: true,
 			margin: [20,20,20,20],
-			xTickFormatter: d3.format('.2s'),
-			yTickFormatter: d3.format('.2s'),
+			xTickCount: 5,
+			yTickCount: 5,
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
 	};
@@ -118,7 +118,7 @@ define([
 			}
 		});
 		return destination;
-	}
+	};
 
 	/**
 	 * Get the extremes of the data range
@@ -160,6 +160,12 @@ define([
 	};
 
 	Trace.prototype._mouseover = function (evt) {
+
+		if (this.options.mouseover) {
+			this.options.mouseover(evt);
+			return;
+		}
+
 		this.tooltip = document.createElement('div');
 		this.tooltip.className = 'trace-tooltip';
 		this.tooltip.innerHTML = this.options.tooltips(evt);
@@ -177,6 +183,12 @@ define([
 	 * @param  {Object} evt mouse out event
 	 */
 	Trace.prototype._mouseout = function (evt) {
+
+		if (this.options.mouseout) {
+			this.options.mouseout(evt);
+			return;
+		}
+
 		this.tooltip.parentNode.removeChild(this.tooltip);
 	};
 
@@ -188,21 +200,29 @@ define([
 			this.xaxis = this.chart.append('g')
 				.attr('class', 'trace-xaxis')
 				.attr('transform', 'translate(0,' + (this.options.height - this.options.margin[0] - this.options.margin[2]) + ')')
-				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(this.options.xTickFormat));
+				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(this.options.xTickCount).tickFormat(this.options.xTickFormat));
 		}
 
 		// yaxis
 		if (this.options.showy) {
 			this.yaxis = this.chart.append('g')
-				.attr('class', 'trace-yaxis')
+				.attr('class', 'trace-yaxis left')
 				.attr('transform', 'translate(0,0)')
-				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(this.options.yTickFormat));
+				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(this.options.yTickCount).tickFormat(this.options.yTickFormat));
+		}
+
+		// second y axis
+		if (this.options.showy2) {
+			this.yaxis2 = this.chart.append('g')
+				.attr('class', 'trace-yaxis right')
+				.attr('transform', 'translate(' + (this.options.width - this.options.margin[1] - this.options.margin[3]) + ',0)')
+				.call(d3.svg.axis().scale(this.yfunc).orient('right').ticks(this.options.yTickCount).tickFormat(this.options.yTickFormat));
 		}
 
 		// gridline
 		if (this.options.gridlines) {
 			this.gridlines = this.chart.selectAll('line.trace-gridline')
-				.data(this.yfunc.ticks(5))
+				.data(typeof this.yfunc.ticks !== 'undefined' ? this.yfunc.ticks(this.options.yTickCount) : this.xfunc.ticks(this.options.xTickCount))
 			.enter()
 				.append('line')
 				.attr('class', 'trace-gridline')
@@ -212,7 +232,6 @@ define([
 				.attr('y2', function (d) { return this.yfunc(d); }.bind(this))
 				.attr('stroke-dasharray', '1, 1');
 		}
-
 
 		// render the legend
 		if (this.options.legend) {
@@ -230,38 +249,24 @@ define([
 
 	Trace.prototype._legend = function () {
 
+		// if we don't have a name for any series, don't show it in the legend
+		var series = Object.keys(this.options.data).filter(function (item) {
+			if (item && item !== 'undefined') {
+				return item;
+			}
+		});
 
-		var series = Object.keys(this.options.data);
-
-		var legend = d3.select(this.options.div)
+		d3.select(this.options.div)
 			.append('div')
 			.attr('class', 'trace-legend')
 			.selectAll('div.label')
-				.data(series)
-			.enter()
-				.append('div')
-				.attr('class', 'label')
-				.html(function (d, i) {
-					return '<div class="selector selected"><span class="key" style="border-left-color:' + this.colors(i) + ';">' + d + '</span></div>';
-				}.bind(this))
-				.on('click', function (e) {
-
-					var target = d3.event.target;
-
-					while (!target.classList.contains('selector')) {
-						target = target.parentNode;
-					}
-
-					target.classList.toggle('selected');
-
-					this.chart.selectAll('.trace-' + e)
-						.style('display', target.classList.contains('selected') ? 'block' : 'none');
-
-
-
-				}.bind(this));
-
-
+			.data(series)
+		.enter()
+			.append('div')
+			.attr('class', 'label')
+			.html(function (d, i) {
+				return '<div class="key"><span style="background-color:' + this.colors(i) + ';"></span>' + d + '</div>';
+			}.bind(this));
 	};
 
 	return Trace;
