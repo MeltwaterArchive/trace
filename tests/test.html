@@ -30,6 +30,12 @@
 
 			.legend { position: absolute; top: 0; right: 0; }
 
+			.states {
+				fill: none;
+				stroke-width: 1px;
+				stroke: black;
+			}
+
 		</style>
 
 		<script type="text/javascript">
@@ -37,12 +43,23 @@
 			requirejs.config({
 				paths: {
 					d3: '../lib/d3',
+					topojson: '../lib/topojson',
+					world: '../lib/world'
 				}
 			});
 
-		require(['../trace'], function (Trace) {
+			require(['../trace', 'world'], function (Trace, world) {
 
 			console.log(Trace);
+			console.log(world);
+
+			var obj = {};
+
+			world.features.forEach(function (c) {
+				obj[c.properties.name] = Math.random();
+			});
+
+			console.log(obj, JSON.stringify(obj));
 
 			var random = function (length) {
 				var arr = [];
@@ -51,13 +68,13 @@
 					arr.push([new Date(times[i]), Math.round(Math.random() * 100)]);
 				}
 				return arr;
-			}
+			};
 
 			var aa = random(10),
 				bb = random(10),
 				cc = random(10);
 
-			/*var l = new Trace.lineGraph({
+			var l = new Trace.lineChart({
 				'div': '#line',
 				'margin': [10, 10, 50, 30],
 				'width': 500,
@@ -103,57 +120,26 @@
 				'data': {
 					'a': [[1,1], [2,2], [3,3]]
 				}
-			});*/
-
-			var likert = new Trace.likert({
-				'div': '#likert',
-				'margin': [50, 50, 50, 50],
-				'width': 600,
-				'height': 400,
-				'data': {
-					"a": aa,
-					"b": bb,
-					"c": cc
-				}
 			});
 
-			/*var pie = new Trace.pieChart({
+			var pie = new Trace.pieChart({
 				'div': '#pie',
 				'margin': [10, 10, 10, 10],
 				'width': 300,
 				'height': 300,
 				'data': {
-					'a': aa
+					'a': 10,
+					'b': 20,
+					'c': 30
 				}
 			});
 
-			setInterval(function () {
-
-				var aa = random(10),
-					bb = random(10),
-					cc = random(10);
-
-				l.update({
-					"a": aa,
-					"b": bb,
-					"c": cc
-				});
-
-				b.update({
-					"a": aa
-				});
-
-				c.update({
-					"a": aa,
-					"b": bb,
-					"c": cc
-				});
-
-				pie.update({
-					"a": aa
-				});
-
-			}, 1000);*/
+			var choropleth = new Trace.choropleth({
+				'div': '#choropleth',
+				'height': 960,
+				'width': 960,
+				'data': {"Afghanistan":0.30357255856506526,"Angola":0.41506976378150284,"Albania":0.7880493456032127,"United Arab Emirates":0.4782889587804675,"Argentina":0.7267812471836805,"Armenia":0.9050879292190075,"Antarctica":0.703516464214772,"French Southern and Antarctic Lands":0.4706439992878586,"Australia":0.8704310823231936,"Austria":0.844689464662224,"Azerbaijan":0.8340403246693313,"Burundi":0.7960083186626434,"Belgium":0.2040939200669527,"Benin":0.8950504113454372,"Burkina Faso":0.8085264381952584,"Bangladesh":0.8159781955182552,"Bulgaria":0.0487635696772486,"The Bahamas":0.22001454862765968,"Bosnia and Herzegovina":0.6354268591385335,"Belarus":0.7147341533564031,"Belize":0.6066955348942429,"Bolivia":0.807470306288451,"Brazil":0.7536372237373143,"Brunei":0.19974179728887975,"Bhutan":0.4753476036712527,"Botswana":0.4675577583257109,"Central African Republic":0.9591160335112363,"Canada":0.8178372140973806,"Switzerland":0.6543383649550378,"Chile":0.7478838928509504,"China":0.43889148463495076,"Ivory Coast":0.3663129841443151,"Cameroon":0.5546532825101167,"Democratic Republic of the Congo":0.2910498094279319,"Republic of the Congo":0.7145457831211388,"Colombia":0.2105692601762712,"Costa Rica":0.5218151879962534,"Cuba":0.19864415656775236,"Northern Cyprus":0.603213430615142,"Cyprus":0.9390491037629545,"Czech Republic":0.07765658502466977,"Germany":0.32350635365583,"Djibouti":0.7549748858436942,"Denmark":0.2768021954689175,"Dominican Republic":0.8113478603772819,"Algeria":0.5423426299821585,"Ecuador":0.39490445936098695,"Egypt":0.15042615309357643,"Eritrea":0.20185451488941908,"Spain":0.27539629279635847,"Estonia":0.3485009034629911,"Ethiopia":0.44933996605686843,"Finland":0.4357530134730041,"Fiji":0.6102890635374933,"Falkland Islands":0.38297694455832243,"France":0.02844007918611169,"Gabon":0.646411307156086,"United Kingdom":0.7455242713913321,"Georgia":0.7937336349859834,"Ghana":0.1874545377213508,"Guinea":0.018021328141912818,"Gambia":0.9635429996997118,"Guinea Bissau":0.47779386560432613,"Equatorial Guinea":0.6962354178540409,"Greece":0.12277412950061262,"Greenland":0.7746181117836386,"Guatemala":0.2958336404990405,"Guyana":0.8863527122884989,"Honduras":0.01765620498917997,"Croatia":0.5530278652440757,"Haiti":0.03284213365986943,"Hungary":0.20170859689824283,"Indonesia":0.7670015583280474,"India":0.03467017039656639,"Ireland":0.2744944905862212,"Iran":0.07066771807149053,"Iraq":0.1375676398165524,"Iceland":0.18989152857102454,"Israel":0.5809432556852698,"Italy":0.26732435543090105,"Jamaica":0.9164487279485911,"Jordan":0.5385009504389018,"Japan":0.36971625150181353,"Kazakhstan":0.9329104840289801,"Kenya":0.4167991881258786,"Kyrgyzstan":0.04928844003006816,"Cambodia":0.7392521658912301,"South Korea":0.5568006655666977,"Kosovo":0.18500826717354357,"Kuwait":0.6591648368630558,"Laos":0.7855417937971652,"Lebanon":0.42643241747282445,"Liberia":0.6069328889716417,"Libya":0.854901785729453,"Sri Lanka":0.8141217902302742,"Lesotho":0.7724833444226533,"Lithuania":0.9697976980824023,"Luxembourg":0.4829037568997592,"Latvia":0.8618015316314995,"Morocco":0.4075332048814744,"Moldova":0.03433675831183791,"Madagascar":0.12305110855959356,"Mexico":0.5446050344035029,"Macedonia":0.19782467116601765,"Mali":0.7532256860285997,"Myanmar":0.6038926460314542,"Montenegro":0.1967304169666022,"Mongolia":0.9611842466983944,"Mozambique":0.15909602656029165,"Mauritania":0.6235098189208657,"Malawi":0.8323974760714918,"Malaysia":0.2977578453719616,"Namibia":0.566865642555058,"New Caledonia":0.6400900708977133,"Niger":0.7205295681487769,"Nigeria":0.15205270517617464,"Nicaragua":0.4537329417653382,"Netherlands":0.6150980363599956,"Norway":0.32455697120167315,"Nepal":0.8858412767294794,"New Zealand":0.6716234844643623,"Oman":0.47298190742731094,"Pakistan":0.9543950103688985,"Panama":0.8084991842042655,"Peru":0.2820600022096187,"Philippines":0.741075397003442,"Papua New Guinea":0.6347576973494142,"Poland":0.7529899785295129,"Puerto Rico":0.3222412180621177,"North Korea":0.10614621150307357,"Portugal":0.7953218948096037,"Paraguay":0.6236171401105821,"Qatar":0.9332527248188853,"Romania":0.5392039578873664,"Russia":0.029672101140022278,"Rwanda":0.9737882807385176,"Western Sahara":0.35893007298000157,"Saudi Arabia":0.5456810237374157,"Sudan":0.5208332377951592,"South Sudan":0.6834252020344138,"Senegal":0.03720258711837232,"Solomon Islands":0.9207594965118915,"Sierra Leone":0.05790377804078162,"El Salvador":0.043291881680488586,"Somaliland":0.5199279892258346,"Somalia":0.3133552309591323,"Republic of Serbia":0.9245437101926655,"Suriname":0.36262675281614065,"Slovakia":0.38530696695670485,"Slovenia":0.053048108937218785,"Sweden":0.40911823813803494,"Swaziland":0.14878507400862873,"Syria":0.4932402092963457,"Chad":0.8894489537924528,"Togo":0.645391165278852,"Thailand":0.54963059280999,"Tajikistan":0.8546832073479891,"Turkmenistan":0.9467360561247915,"East Timor":0.8052920284681022,"Trinidad and Tobago":0.5056147857103497,"Tunisia":0.18910711561329663,"Turkey":0.6512889487203211,"Taiwan":0.5517156566493213,"United Republic of Tanzania":0.5471844633575529,"Uganda":0.8103496606927365,"Ukraine":0.7341805899050087,"Uruguay":0.42767623462714255,"United States of America":0.15230756369419396,"Uzbekistan":0.050139029044657946,"Venezuela":0.7978542679920793,"Vietnam":0.277456380892545,"Vanuatu":0.6531260639894754,"West Bank":0.8650642279535532,"Yemen":0.0540744427125901,"South Africa":0.9738624221645296,"Zambia":0.7412238689139485,"Zimbabwe":0.30112093477509916}
+			});
 		});
 
 		</script>
@@ -165,8 +151,8 @@
 
 			<h2>Examples</h2>
 
-			<h3>Likert Chart</h3>
-			<div id="likert"></div>
+			<h3>Choropleth</h3>
+			<div id="Choropleth"></div>
 
 			<h3>Line Chart</h3>
 			<div id="line"></div>
