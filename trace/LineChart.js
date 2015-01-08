@@ -19,6 +19,7 @@ define([
 	 * - `showy`: Show or hide the Y axis, defualts to `true`
 	 * - `showpoints`: Show the points on the line
 	 * - `interpolate`: Type of line interpolation (whether it's curved or straight) see https://github.com/mbostock/d3/wiki/SVG-Shapes#line_interpolate
+	 * - `brush`: This will enable drag selections of the line chart. This is a function which accepts a single element of the extent, the x0 and x1 positions of the brush box.
 	 * 
 	 * @class  LineGraph
 	 * @constructor
@@ -34,7 +35,8 @@ define([
 			showy: true,
 			showpoints: true,
 			interpolate: 'linear',
-			gridlines: true
+			gridlines: true,
+			brush: false
 		}, options);
 
 		this.lines = {};
@@ -185,6 +187,24 @@ define([
 					.on('mouseout', this._mouseout.bind(this));
 			}
 		}.bind(this));
+
+		// optional selecting of an area of the chart
+		if (this.options.brush) {
+			var brush = d3.svg.brush()
+				.x(this.xfunc)
+				.on('brushend', function () {
+					if (!d3.event.sourceEvent) return;
+					this.options.brush(brush.extent());
+				}.bind(this));
+
+			var gbrush = this.chart.append('g')
+				.attr('class', 'brush')
+				.call(brush)
+				.call(brush.event);
+
+			gbrush.selectAll('rect')
+				.attr('height', this.options.height - this.options.margin[0] - this.options.margin[2]);
+		}
 	};
 
 	/**
