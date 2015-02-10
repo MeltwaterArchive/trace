@@ -57,6 +57,7 @@ define([
 			margin: [20,20,20,20],
 			xTickCount: 5,
 			yTickCount: 5,
+			zoom: false,
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
 	};
@@ -173,6 +174,24 @@ define([
 		this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
 		document.body.appendChild(this.tooltip);
 	};
+
+	Trace.prototype._zoom = function () {
+		this.zoom = d3.behavior.zoom()
+			.scaleExtent([1, 10])
+			.on('zoom', function () {
+				this.svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+			}.bind(this));
+
+		this.drag = d3.behavior.drag()
+			.origin(function(d) { return d; })
+			.on("dragstart", this._dragstarted.bind(this))
+			.on("drag", this._dragged.bind(this))
+			.on("dragend", this._dragended.bind(this));
+	};
+
+	Trace.prototype._dragstarted = function () {};
+	Trace.prototype._dragged = function () {};
+	Trace.prototype._dragended = function () {};
 
 	/**
 	 * Just remove the tooltip when we mouse out

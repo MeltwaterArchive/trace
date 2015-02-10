@@ -8,6 +8,7 @@ define(function (require) {
 		barChart: require('./trace/BarChart'),
 		pieChart: require('./trace/PieChart'),
 		likert: require('./trace/Likert'),
-		choropleth: require('./trace/Choropleth')
+		choropleth: require('./trace/Choropleth'),
+		forceDirected: require('./trace/ForceDirected')
 	};
 });
