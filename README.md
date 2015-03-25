@@ -69,17 +69,23 @@ Charts can be updated using the `update` method which takes in a new data set. T
 
 The parameter allows you to easily format the tooltips. The function is passed an arr with the first index being the `x` value and the second being the `y` value.
 
-     new Trace.lineGraph({
-		data: {'Example': [[1,1], [2,2], [3,3]]},
-		tooltips: function (vals) {
-			return 'x:' + vals[0] + ' y:' + vals[1];
-		}
-     });
+    new Trace.lineGraph({
+      data: {'Example': [[1,1], [2,2], [3,3]]},
+      tooltips: function (vals) {
+    	 return 'x:' + vals[0] + ' y:' + vals[1];
+      }
+    });
 
- ## Formatting Axis Labels
+## Formatting Axis Labels
 
- You can format the ticks on the x and y axis by using `xTickFormat` and `yTickFormat` respectively. Please read the d3 documentation on the [format of string](https://github.com/mbostock/d3/wiki/Formatting#d3_format) also see `d3.time.format` for formatting where x or y is a time series.
+You can format the ticks on the x and y axis by using `xTickFormat` and `yTickFormat` respectively. Please read the d3 documentation on the [format of string](https://github.com/mbostock/d3/wiki/Formatting#d3_format) also see `d3.time.format` for formatting where x or y is a time series.
 
- ## Legend
+## Legend
 
- The Legend is built using standard HTML elements and is appended to your `div` after the `svg` element. This is so you are able to easily style the legend.
+The Legend is built using standard HTML elements and is appended to your `div` after the `svg` element. This is so you are able to easily style the legend.
+
+## Building
+
+Trace uses Almond and r.js to build the minified file.
+
+`node tools/r.js -o tools/build.js`
