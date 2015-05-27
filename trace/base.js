@@ -167,6 +167,10 @@ define([
 			return;
 		}
 
+		if (!this.options.tooltips) {
+			return;
+		}
+
 		this.tooltip = document.createElement('div');
 		this.tooltip.className = 'trace-tooltip';
 		this.tooltip.innerHTML = this.options.tooltips(evt);
@@ -208,7 +212,9 @@ define([
 			return;
 		}
 
-		this.tooltip.parentNode.removeChild(this.tooltip);
+		if (this.tooltip) {
+			this.tooltip.parentNode.removeChild(this.tooltip);
+		}
 	};
 
 	// private methods
