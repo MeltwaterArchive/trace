@@ -16,6 +16,7 @@ define([
 	 * ## Options
 	 * These are the default options available to each chart
 	 *
+	 * - **div**: The element to render the chart within
 	 * - **data**: The data you are supplying it needs to be in the format of
 	 *     `{
 	 *       <series1>: [[x,y]...],
@@ -167,12 +168,14 @@ define([
 			return;
 		}
 
-		this.tooltip = document.createElement('div');
-		this.tooltip.className = 'trace-tooltip';
-		this.tooltip.innerHTML = this.options.tooltips(evt);
-		this.tooltip.style.left = (d3.event.clientX + window.scrollX) + 'px';
-		this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
-		document.body.appendChild(this.tooltip);
+		if (this.tooltip) {
+			this.tooltip = document.createElement('div');
+			this.tooltip.className = 'trace-tooltip';
+			this.tooltip.innerHTML = this.options.tooltips(evt);
+			this.tooltip.style.left = (d3.event.clientX + window.scrollX) + 'px';
+			this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
+			document.body.appendChild(this.tooltip);
+		}
 	};
 
 	Trace.prototype._zoom = function () {
@@ -208,7 +211,9 @@ define([
 			return;
 		}
 
-		this.tooltip.parentNode.removeChild(this.tooltip);
+		if (this.tooltip) {
+			this.tooltip.parentNode.removeChild(this.tooltip);
+		}
 	};
 
 	// private methods

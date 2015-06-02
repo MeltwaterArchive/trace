@@ -5,7 +5,13 @@ variety of data and is easily extensible with new graph types.
 
 ## Usage
 
-Trace is very easy to use, it has one depency on [d3](http://d3js.org).
+Trace is very easy to use, it has one depency on [d3](http://d3js.org). The `d3` object needs to be visble to the library, if you using requirejs you can do this by setting the paths e.g.:
+
+    requirejs.config({
+        paths: {
+          'd3': '<path to d3>'
+        }
+    });
 
 You can load Trace in one of two ways, firstly include the compressed `trace-min` file in your script tag. Or secondly load Trace in a AMD compatiable enviroment such as requireJs `require(['path-to-trace-min.js'], ...)`.
 
@@ -15,6 +21,7 @@ To create a new chart:
 
 Where options is an object:
 
+- **div**: The element to render the chart within
 - **data**: The data you are supplying it needs to be in the format of
     `{
       <series1>: [[x,y]...],
@@ -31,9 +38,21 @@ these values will need to be adjusted to fit in the axis values
 - **xTickFormat**: Format the ticks on the xaxis see [d3 format](https://github.com/mbostock/d3/wiki/Formatting#d3_format)
 - **yTickFormat**: Format the ticks on the yaxis see [d3 format](https://github.com/mbostock/d3/wiki/Formatting#d3_format)
 
+### Data Formatting
+
+Most of the errors which are seen through trace and via correct data formatting. Each of the charts takes the same data format which is one of the benefits of Trace. The data format is the following:
+
+    {
+      <series1>: [[x,y]...],
+      ...
+    }
+
+Where `series1` is the name of the current series. This will appear on the legend and is most useful for stacked bar charts. Each series needs to contain an array of arrays. Each one consisting of the x value and the y value. If you would like date formatting you can pass in a unix timestamp to the x parameters (see the examples for more information).
+
+
 ### Line Graph
 
-`new Trace.lineGraph(options)`
+`new Trace.lineChart(options)`
 
 ![LineGraph](http://cl.ly/image/0z0M0T430Q2O/download/Screen%20Shot%202014-05-07%20at%2009.58.19.png)
 
@@ -54,6 +73,22 @@ In addition to the standard options that are available with Trace there these sp
 
 - **showx**: Show or hide the X axis, defaults to `true`
 - **showy**: Show or hide the Y axis, defaults to `true`
+
+### Pie Chart
+
+`new Trace.pieChart(options)`
+
+![PieChart](http://cl.ly/image/383F1m3b3a1B/Screen%20Shot%202015-06-01%20at%2015.19.41.png)
+
+This supports the standard set of options.
+
+### Other Chart Types
+
+To use these other types you will have to manually include them in your project. They do not support the full feature set and are currently undocument/tested.
+
+- Choropleth (undocumented)
+- ForceDirected (undocumented)
+- Likert (in development)
 
 ## Updating/animating a chart
 
