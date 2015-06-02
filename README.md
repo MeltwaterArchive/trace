@@ -124,3 +124,9 @@ The Legend is built using standard HTML elements and is appended to your `div` a
 Trace uses Almond and r.js to build the minified file.
 
 `node tools/r.js -o tools/build.js`
+
+### Updating documentation
+
+The documentation is built using Jekyll.
+
+`git subtree push --prefix docs origin gh-pages`
