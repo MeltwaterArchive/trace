@@ -168,6 +168,7 @@ define([
 			return;
 		}
 
+<<<<<<< HEAD
 		if (this.tooltip) {
 			this.tooltip = document.createElement('div');
 			this.tooltip.className = 'trace-tooltip';
@@ -176,6 +177,18 @@ define([
 			this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
 			document.body.appendChild(this.tooltip);
 		}
+=======
+		if (!this.options.tooltips) {
+			return;
+		}
+
+		this.tooltip = document.createElement('div');
+		this.tooltip.className = 'trace-tooltip';
+		this.tooltip.innerHTML = this.options.tooltips(evt);
+		this.tooltip.style.left = (d3.event.clientX + window.scrollX) + 'px';
+		this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
+		document.body.appendChild(this.tooltip);
+>>>>>>> 617c79e9ea3c27ae3c3a7aa5f966c43aaeb7dc5d
 	};
 
 	Trace.prototype._zoom = function () {
