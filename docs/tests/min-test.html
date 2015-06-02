@@ -1,0 +1,136 @@
+<html>
+	<head>
+		<title>Trace Tests</title>
+		<script src="../lib/d3.js" charset="UTF-8"></script>
+		<script src="../trace-min.js"></script>
+		<link href="../css/base.css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+
+		<style>
+
+			body {
+				font-family: "Open Sans", Helvetica, Arial, sans-serif;
+				font-size: 14px;
+				line-height: 1.5em;
+				padding: 0;
+				margin: 0;
+				color: #767676;
+			}
+
+			h1, h2, h3 {
+				font-weight: 300;
+				color: #1e2c35;
+			}
+
+			.wrapper { 
+				margin: 50px auto;
+				width: 500px; 
+			}
+
+		</style>
+
+				<div class="wrapper">
+
+			<h1>Trace</h1>
+			<p>Trace is a JavaScript charting library based off D3.</p>
+
+			<h2>Examples</h2>
+
+			<h3>Line Chart</h3>
+			<div id="line"></div>
+
+			<h3>Bar Chart</h3>
+			<div id="bar"></div>
+
+			<h3>Stacked Bar Chart</h3>
+			<div id="stackedbar"></div>
+
+
+		</div>
+
+
+		<script type="text/javascript">
+
+			
+			var random = function (length) {
+				var arr = [];
+				var times = [1398643200000,1398646800000,1398650400000,1398654000000,1398657600000,1398661200000,1398664800000,1398668400000,1398672000000,1398675600000];
+				for (var i = 0; i < length; i++) {
+					arr.push([new Date(times[i]), Math.round(Math.random() * 100)]);
+				}
+				return arr;
+			}
+
+			var aa = random(10),
+				bb = random(10),
+				cc = random(10);
+
+			var l = new Trace.lineGraph({
+				'div': '#line',
+				'margin': [10, 10, 50, 30],
+				'width': 500,
+				'height': 250,
+				'data': {
+					"a": aa,
+					"b": bb,
+					"c": cc
+				},
+				'tooltips': function (e) {
+					return '<strong>' + e[1] + '</strong><br/>x-axis val';
+				}
+			});
+
+			var b = new Trace.barChart({
+				'div': '#bar',
+				'margin': [10, 10, 50, 30],
+				'width': 500,
+				'height': 250,
+				'data': {
+					"a": aa
+				}
+			});
+
+			var c = new Trace.barChart({
+				'div': '#stackedbar',
+				'margin': [10, 10, 50, 30],
+				'width': 500,
+				'height': 250,
+				'data': {
+					"a": aa,
+					"b": bb,
+					"c": cc
+				}
+			});
+
+			setInterval(function () {
+
+				var aa = random(10),
+					bb = random(10),
+					cc = random(10);
+
+				l.update({
+					"a": aa,
+					"b": bb,
+					"c": cc
+				});
+
+				b.update({
+					"a": aa
+				});
+
+				c.update({
+					"a": aa,
+					"b": bb,
+					"c": cc
+				});
+
+			}, 1000);
+
+		</script>
+
+
+
+	</body>
+</html>

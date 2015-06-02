@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>Title Not Set</title>
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css">
+    <style>
+      body > .navbar .brand {
+        float:left;
+        text-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px, rgba(255, 255, 255, 0.4) 0px 0px 30px;
+        color: white;
+        margin-left:0px;
+        font-weight:normal;
+      }
+      
+      .bs-docs-sidenav.affix {
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+      }
+      
+      .bs-docs-sidenav i{
+        width: 8px;
+        height: 8px;
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+        margin-right:0.5em;
+      }
+      
+      .bs-docs-sidenav > li > a {
+          word-wrap: break-word;
+      }
+      
+      .bs-docs-sidenav > li:first-child > a {
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+      }
+      
+      code[class*="language-"],pre[class*="language-"]{color:black;text-shadow:0 1px white;font-family:Consolas,Monaco,'Andale Mono',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*="language-"]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*="language-"],pre[class*="language-"]{background:#f5f2f0}:not(pre)>code[class*="language-"]{padding:.1em;border-radius:.3em}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:slategray}.token.punctuation{color:#999}.namespace{opacity:.7}.token.property,.token.tag,.token.boolean,.token.number{color:#905}.token.selector,.token.attr-name,.token.string{color:#690}.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.regex,.token.important{color:#e90}.token.important{font-weight:bold}.token.entity{cursor:help}
+      div.description {margin: 14px 0; padding-top: 14px; border-bottom:1px solid #eee; }
+      .tags {}
+      .ctx-type {
+        display:inline-block;
+        margin-right:0.5em;
+        //- float:right; margin-top:8px
+      }
+      
+      footer iframe{vertical-align:middle;}
+      
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Doxx</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>Title Not Set</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="d3.js.html">d3.js</a></li>
+            <li class="active"><a href="require.js.html">require.js</a></li>
+            <li><a href="thread.js.html">thread.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="description"><p>RequireJS 2.1.10 Copyright (c) 2010-2014, The Dojo Foundation All Rights Reserved.<br /> Available via the MIT or new BSD license.<br /> see: <a href='http://github.com/jrburke/requirejs'>http://github.com/jrburke/requirejs</a> for details</p> </div>
+          <pre><code class="language-javascript">var requirejs,require,define;
+(function(ca){function G(b){return&quot;[object Function]&quot;===N.call(b)}function H(b){return&quot;[object Array]&quot;===N.call(b)}function v(b,c){if(b){var d;for(d=0;d&lt;b.length&amp;&amp;(!b[d]||!c(b[d],d,b));d+=1);}}function U(b,c){if(b){var d;for(d=b.length-1;-1&lt;d&amp;&amp;(!b[d]||!c(b[d],d,b));d-=1);}}function s(b,c){return ga.call(b,c)}function j(b,c){return s(b,c)&amp;&amp;b[c]}function B(b,c){for(var d in b)if(s(b,d)&amp;&amp;c(b[d],d))break}function V(b,c,d,g){c&amp;&amp;B(c,function(c,h){if(d||!s(b,h))g&amp;&amp;&quot;object&quot;===typeof c&amp;&amp;c&amp;&amp;!H(c)&amp;&amp;!G(c)&amp;&amp;!(c instanceof
+RegExp)?(b[h]||(b[h]={}),V(b[h],c,d,g)):b[h]=c});return b}function t(b,c){return function(){return c.apply(b,arguments)}}function da(b){throw b;}function ea(b){if(!b)return b;var c=ca;v(b.split(&quot;.&quot;),function(b){c=c[b]});return c}function C(b,c,d,g){c=Error(c+&quot;\nhttp://requirejs.org/docs/errors.html#&quot;+b);c.requireType=b;c.requireModules=g;d&amp;&amp;(c.originalError=d);return c}function ha(b){function c(a,e,b){var f,n,c,d,g,h,i,I=e&amp;&amp;e.split(&quot;/&quot;);n=I;var m=l.map,k=m&amp;&amp;m[&quot;*&quot;];if(a&amp;&amp;&quot;.&quot;===a.charAt(0))if(e){n=
+I.slice(0,I.length-1);a=a.split(&quot;/&quot;);e=a.length-1;l.nodeIdCompat&amp;&amp;R.test(a[e])&amp;&amp;(a[e]=a[e].replace(R,&quot;&quot;));n=a=n.concat(a);d=n.length;for(e=0;e&lt;d;e++)if(c=n[e],&quot;.&quot;===c)n.splice(e,1),e-=1;else if(&quot;..&quot;===c)if(1===e&amp;&amp;(&quot;..&quot;===n[2]||&quot;..&quot;===n[0]))break;else 0&lt;e&amp;&amp;(n.splice(e-1,2),e-=2);a=a.join(&quot;/&quot;)}else 0===a.indexOf(&quot;./&quot;)&amp;&amp;(a=a.substring(2));if(b&amp;&amp;m&amp;&amp;(I||k)){n=a.split(&quot;/&quot;);e=n.length;a:for(;0&lt;e;e-=1){d=n.slice(0,e).join(&quot;/&quot;);if(I)for(c=I.length;0&lt;c;c-=1)if(b=j(m,I.slice(0,c).join(&quot;/&quot;)))if(b=j(b,d)){f=b;
+g=e;break a}!h&amp;&amp;(k&amp;&amp;j(k,d))&amp;&amp;(h=j(k,d),i=e)}!f&amp;&amp;h&amp;&amp;(f=h,g=i);f&amp;&amp;(n.splice(0,g,f),a=n.join(&quot;/&quot;))}return(f=j(l.pkgs,a))?f:a}function d(a){z&amp;&amp;v(document.getElementsByTagName(&quot;script&quot;),function(e){if(e.getAttribute(&quot;data-requiremodule&quot;)===a&amp;&amp;e.getAttribute(&quot;data-requirecontext&quot;)===i.contextName)return e.parentNode.removeChild(e),!0})}function g(a){var e=j(l.paths,a);if(e&amp;&amp;H(e)&amp;&amp;1&lt;e.length)return e.shift(),i.require.undef(a),i.require([a]),!0}function u(a){var e,b=a?a.indexOf(&quot;!&quot;):-1;-1&lt;b&amp;&amp;(e=a.substring(0,
+b),a=a.substring(b+1,a.length));return[e,a]}function m(a,e,b,f){var n,d,g=null,h=e?e.name:null,l=a,m=!0,k=&quot;&quot;;a||(m=!1,a=&quot;_@r&quot;+(N+=1));a=u(a);g=a[0];a=a[1];g&amp;&amp;(g=c(g,h,f),d=j(p,g));a&amp;&amp;(g?k=d&amp;&amp;d.normalize?d.normalize(a,function(a){return c(a,h,f)}):c(a,h,f):(k=c(a,h,f),a=u(k),g=a[0],k=a[1],b=!0,n=i.nameToUrl(k)));b=g&amp;&amp;!d&amp;&amp;!b?&quot;_unnormalized&quot;+(Q+=1):&quot;&quot;;return{prefix:g,name:k,parentMap:e,unnormalized:!!b,url:n,originalName:l,isDefine:m,id:(g?g+&quot;!&quot;+k:k)+b}}function q(a){var e=a.id,b=j(k,e);b||(b=k[e]=new i.Module(a));
+return b}function r(a,e,b){var f=a.id,n=j(k,f);if(s(p,f)&amp;&amp;(!n||n.defineEmitComplete))&quot;defined&quot;===e&amp;&amp;b(p[f]);else if(n=q(a),n.error&amp;&amp;&quot;error&quot;===e)b(n.error);else n.on(e,b)}function w(a,e){var b=a.requireModules,f=!1;if(e)e(a);else if(v(b,function(e){if(e=j(k,e))e.error=a,e.events.error&amp;&amp;(f=!0,e.emit(&quot;error&quot;,a))}),!f)h.onError(a)}function x(){S.length&amp;&amp;(ia.apply(A,[A.length,0].concat(S)),S=[])}function y(a){delete k[a];delete W[a]}function F(a,e,b){var f=a.map.id;a.error?a.emit(&quot;error&quot;,a.error):(e[f]=
+!0,v(a.depMaps,function(f,c){var d=f.id,g=j(k,d);g&amp;&amp;(!a.depMatched[c]&amp;&amp;!b[d])&amp;&amp;(j(e,d)?(a.defineDep(c,p[d]),a.check()):F(g,e,b))}),b[f]=!0)}function D(){var a,e,b=(a=1E3*l.waitSeconds)&amp;&amp;i.startTime+a&lt;(new Date).getTime(),f=[],c=[],h=!1,k=!0;if(!X){X=!0;B(W,function(a){var i=a.map,m=i.id;if(a.enabled&amp;&amp;(i.isDefine||c.push(a),!a.error))if(!a.inited&amp;&amp;b)g(m)?h=e=!0:(f.push(m),d(m));else if(!a.inited&amp;&amp;(a.fetched&amp;&amp;i.isDefine)&amp;&amp;(h=!0,!i.prefix))return k=!1});if(b&amp;&amp;f.length)return a=C(&quot;timeout&quot;,&quot;Load timeout for modules: &quot;+
+f,null,f),a.contextName=i.contextName,w(a);k&amp;&amp;v(c,function(a){F(a,{},{})});if((!b||e)&amp;&amp;h)if((z||fa)&amp;&amp;!Y)Y=setTimeout(function(){Y=0;D()},50);X=!1}}function E(a){s(p,a[0])||q(m(a[0],null,!0)).init(a[1],a[2])}function L(a){var a=a.currentTarget||a.srcElement,e=i.onScriptLoad;a.detachEvent&amp;&amp;!Z?a.detachEvent(&quot;onreadystatechange&quot;,e):a.removeEventListener(&quot;load&quot;,e,!1);e=i.onScriptError;(!a.detachEvent||Z)&amp;&amp;a.removeEventListener(&quot;error&quot;,e,!1);return{node:a,id:a&amp;&amp;a.getAttribute(&quot;data-requiremodule&quot;)}}function M(){var a;
+for(x();A.length;){a=A.shift();if(null===a[0])return w(C(&quot;mismatch&quot;,&quot;Mismatched anonymous define() module: &quot;+a[a.length-1]));E(a)}}var X,$,i,K,Y,l={waitSeconds:7,baseUrl:&quot;./&quot;,paths:{},bundles:{},pkgs:{},shim:{},config:{}},k={},W={},aa={},A=[],p={},T={},ba={},N=1,Q=1;K={require:function(a){return a.require?a.require:a.require=i.makeRequire(a.map)},exports:function(a){a.usingExports=!0;if(a.map.isDefine)return a.exports?a.exports:a.exports=p[a.map.id]={}},module:function(a){return a.module?a.module:
+a.module={id:a.map.id,uri:a.map.url,config:function(){return j(l.config,a.map.id)||{}},exports:K.exports(a)}}};$=function(a){this.events=j(aa,a.id)||{};this.map=a;this.shim=j(l.shim,a.id);this.depExports=[];this.depMaps=[];this.depMatched=[];this.pluginMaps={};this.depCount=0};$.prototype={init:function(a,e,b,f){f=f||{};if(!this.inited){this.factory=e;if(b)this.on(&quot;error&quot;,b);else this.events.error&amp;&amp;(b=t(this,function(a){this.emit(&quot;error&quot;,a)}));this.depMaps=a&amp;&amp;a.slice(0);this.errback=b;this.inited=
+!0;this.ignore=f.ignore;f.enabled||this.enabled?this.enable():this.check()}},defineDep:function(a,e){this.depMatched[a]||(this.depMatched[a]=!0,this.depCount-=1,this.depExports[a]=e)},fetch:function(){if(!this.fetched){this.fetched=!0;i.startTime=(new Date).getTime();var a=this.map;if(this.shim)i.makeRequire(this.map,{enableBuildCallback:!0})(this.shim.deps||[],t(this,function(){return a.prefix?this.callPlugin():this.load()}));else return a.prefix?this.callPlugin():this.load()}},load:function(){var a=
+this.map.url;T[a]||(T[a]=!0,i.load(this.map.id,a))},check:function(){if(this.enabled&amp;&amp;!this.enabling){var a,e,b=this.map.id;e=this.depExports;var f=this.exports,c=this.factory;if(this.inited)if(this.error)this.emit(&quot;error&quot;,this.error);else{if(!this.defining){this.defining=!0;if(1&gt;this.depCount&amp;&amp;!this.defined){if(G(c)){if(this.events.error&amp;&amp;this.map.isDefine||h.onError!==da)try{f=i.execCb(b,c,e,f)}catch(d){a=d}else f=i.execCb(b,c,e,f);this.map.isDefine&amp;&amp;void 0===f&amp;&amp;((e=this.module)?f=e.exports:this.usingExports&amp;&amp;
+(f=this.exports));if(a)return a.requireMap=this.map,a.requireModules=this.map.isDefine?[this.map.id]:null,a.requireType=this.map.isDefine?&quot;define&quot;:&quot;require&quot;,w(this.error=a)}else f=c;this.exports=f;if(this.map.isDefine&amp;&amp;!this.ignore&amp;&amp;(p[b]=f,h.onResourceLoad))h.onResourceLoad(i,this.map,this.depMaps);y(b);this.defined=!0}this.defining=!1;this.defined&amp;&amp;!this.defineEmitted&amp;&amp;(this.defineEmitted=!0,this.emit(&quot;defined&quot;,this.exports),this.defineEmitComplete=!0)}}else this.fetch()}},callPlugin:function(){var a=
+this.map,b=a.id,d=m(a.prefix);this.depMaps.push(d);r(d,&quot;defined&quot;,t(this,function(f){var d,g;g=j(ba,this.map.id);var J=this.map.name,u=this.map.parentMap?this.map.parentMap.name:null,p=i.makeRequire(a.parentMap,{enableBuildCallback:!0});if(this.map.unnormalized){if(f.normalize&amp;&amp;(J=f.normalize(J,function(a){return c(a,u,!0)})||&quot;&quot;),f=m(a.prefix+&quot;!&quot;+J,this.map.parentMap),r(f,&quot;defined&quot;,t(this,function(a){this.init([],function(){return a},null,{enabled:!0,ignore:!0})})),g=j(k,f.id)){this.depMaps.push(f);
+if(this.events.error)g.on(&quot;error&quot;,t(this,function(a){this.emit(&quot;error&quot;,a)}));g.enable()}}else g?(this.map.url=i.nameToUrl(g),this.load()):(d=t(this,function(a){this.init([],function(){return a},null,{enabled:!0})}),d.error=t(this,function(a){this.inited=!0;this.error=a;a.requireModules=[b];B(k,function(a){0===a.map.id.indexOf(b+&quot;_unnormalized&quot;)&amp;&amp;y(a.map.id)});w(a)}),d.fromText=t(this,function(f,c){var g=a.name,J=m(g),k=O;c&amp;&amp;(f=c);k&amp;&amp;(O=!1);q(J);s(l.config,b)&amp;&amp;(l.config[g]=l.config[b]);try{h.exec(f)}catch(j){return w(C(&quot;fromtexteval&quot;,
+&quot;fromText eval for &quot;+b+&quot; failed: &quot;+j,j,[b]))}k&amp;&amp;(O=!0);this.depMaps.push(J);i.completeLoad(g);p([g],d)}),f.load(a.name,p,d,l))}));i.enable(d,this);this.pluginMaps[d.id]=d},enable:function(){W[this.map.id]=this;this.enabling=this.enabled=!0;v(this.depMaps,t(this,function(a,b){var c,f;if(&quot;string&quot;===typeof a){a=m(a,this.map.isDefine?this.map:this.map.parentMap,!1,!this.skipMap);this.depMaps[b]=a;if(c=j(K,a.id)){this.depExports[b]=c(this);return}this.depCount+=1;r(a,&quot;defined&quot;,t(this,function(a){this.defineDep(b,
+a);this.check()}));this.errback&amp;&amp;r(a,&quot;error&quot;,t(this,this.errback))}c=a.id;f=k[c];!s(K,c)&amp;&amp;(f&amp;&amp;!f.enabled)&amp;&amp;i.enable(a,this)}));B(this.pluginMaps,t(this,function(a){var b=j(k,a.id);b&amp;&amp;!b.enabled&amp;&amp;i.enable(a,this)}));this.enabling=!1;this.check()},on:function(a,b){var c=this.events[a];c||(c=this.events[a]=[]);c.push(b)},emit:function(a,b){v(this.events[a],function(a){a(b)});&quot;error&quot;===a&amp;&amp;delete this.events[a]}};i={config:l,contextName:b,registry:k,defined:p,urlFetched:T,defQueue:A,Module:$,makeModuleMap:m,
+nextTick:h.nextTick,onError:w,configure:function(a){a.baseUrl&amp;&amp;&quot;/&quot;!==a.baseUrl.charAt(a.baseUrl.length-1)&amp;&amp;(a.baseUrl+=&quot;/&quot;);var b=l.shim,c={paths:!0,bundles:!0,config:!0,map:!0};B(a,function(a,b){c[b]?(l[b]||(l[b]={}),V(l[b],a,!0,!0)):l[b]=a});a.bundles&amp;&amp;B(a.bundles,function(a,b){v(a,function(a){a!==b&amp;&amp;(ba[a]=b)})});a.shim&amp;&amp;(B(a.shim,function(a,c){H(a)&amp;&amp;(a={deps:a});if((a.exports||a.init)&amp;&amp;!a.exportsFn)a.exportsFn=i.makeShimExports(a);b[c]=a}),l.shim=b);a.packages&amp;&amp;v(a.packages,function(a){var b,
+a=&quot;string&quot;===typeof a?{name:a}:a;b=a.name;a.location&amp;&amp;(l.paths[b]=a.location);l.pkgs[b]=a.name+&quot;/&quot;+(a.main||&quot;main&quot;).replace(ja,&quot;&quot;).replace(R,&quot;&quot;)});B(k,function(a,b){!a.inited&amp;&amp;!a.map.unnormalized&amp;&amp;(a.map=m(b))});if(a.deps||a.callback)i.require(a.deps||[],a.callback)},makeShimExports:function(a){return function(){var b;a.init&amp;&amp;(b=a.init.apply(ca,arguments));return b||a.exports&amp;&amp;ea(a.exports)}},makeRequire:function(a,e){function g(f,c,d){var j,l;e.enableBuildCallback&amp;&amp;(c&amp;&amp;G(c))&amp;&amp;(c.__requireJsBuild=
+!0);if(&quot;string&quot;===typeof f){if(G(c))return w(C(&quot;requireargs&quot;,&quot;Invalid require call&quot;),d);if(a&amp;&amp;s(K,f))return K[f](k[a.id]);if(h.get)return h.get(i,f,a,g);j=m(f,a,!1,!0);j=j.id;return!s(p,j)?w(C(&quot;notloaded&quot;,'Module name &quot;'+j+'&quot; has not been loaded yet for context: '+b+(a?&quot;&quot;:&quot;. Use require([])&quot;))):p[j]}M();i.nextTick(function(){M();l=q(m(null,a));l.skipMap=e.skipMap;l.init(f,c,d,{enabled:!0});D()});return g}e=e||{};V(g,{isBrowser:z,toUrl:function(b){var e,d=b.lastIndexOf(&quot;.&quot;),g=b.split(&quot;/&quot;)[0];if(-1!==
+d&amp;&amp;(!(&quot;.&quot;===g||&quot;..&quot;===g)||1&lt;d))e=b.substring(d,b.length),b=b.substring(0,d);return i.nameToUrl(c(b,a&amp;&amp;a.id,!0),e,!0)},defined:function(b){return s(p,m(b,a,!1,!0).id)},specified:function(b){b=m(b,a,!1,!0).id;return s(p,b)||s(k,b)}});a||(g.undef=function(b){x();var c=m(b,a,!0),e=j(k,b);d(b);delete p[b];delete T[c.url];delete aa[b];U(A,function(a,c){a[0]===b&amp;&amp;A.splice(c,1)});e&amp;&amp;(e.events.defined&amp;&amp;(aa[b]=e.events),y(b))});return g},enable:function(a){j(k,a.id)&amp;&amp;q(a).enable()},completeLoad:function(a){var b,
+c,f=j(l.shim,a)||{},d=f.exports;for(x();A.length;){c=A.shift();if(null===c[0]){c[0]=a;if(b)break;b=!0}else c[0]===a&amp;&amp;(b=!0);E(c)}c=j(k,a);if(!b&amp;&amp;!s(p,a)&amp;&amp;c&amp;&amp;!c.inited){if(l.enforceDefine&amp;&amp;(!d||!ea(d)))return g(a)?void 0:w(C(&quot;nodefine&quot;,&quot;No define call for &quot;+a,null,[a]));E([a,f.deps||[],f.exportsFn])}D()},nameToUrl:function(a,b,c){var f,d,g;(f=j(l.pkgs,a))&amp;&amp;(a=f);if(f=j(ba,a))return i.nameToUrl(f,b,c);if(h.jsExtRegExp.test(a))f=a+(b||&quot;&quot;);else{f=l.paths;a=a.split(&quot;/&quot;);for(d=a.length;0&lt;d;d-=1)if(g=a.slice(0,
+d).join(&quot;/&quot;),g=j(f,g)){H(g)&amp;&amp;(g=g[0]);a.splice(0,d,g);break}f=a.join(&quot;/&quot;);f+=b||(/^data\:|\?/.test(f)||c?&quot;&quot;:&quot;.js&quot;);f=(&quot;/&quot;===f.charAt(0)||f.match(/^[\w\+\.\-]+:/)?&quot;&quot;:l.baseUrl)+f}return l.urlArgs?f+((-1===f.indexOf(&quot;?&quot;)?&quot;?&quot;:&quot;&amp;&quot;)+l.urlArgs):f},load:function(a,b){h.load(i,a,b)},execCb:function(a,b,c,d){return b.apply(d,c)},onScriptLoad:function(a){if(&quot;load&quot;===a.type||ka.test((a.currentTarget||a.srcElement).readyState))P=null,a=L(a),i.completeLoad(a.id)},onScriptError:function(a){var b=L(a);if(!g(b.id))return w(C(&quot;scripterror&quot;,
+&quot;Script error for: &quot;+b.id,a,[b.id]))}};i.require=i.makeRequire();return i}var h,x,y,D,L,E,P,M,q,Q,la=/(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg,ma=/[^.]\s*require\s*\(\s*[&quot;']([^'&quot;\s]+)[&quot;']\s*\)/g,R=/\.js$/,ja=/^\.\//;x=Object.prototype;var N=x.toString,ga=x.hasOwnProperty,ia=Array.prototype.splice,z=!!(&quot;undefined&quot;!==typeof window&amp;&amp;&quot;undefined&quot;!==typeof navigator&amp;&amp;window.document),fa=!z&amp;&amp;&quot;undefined&quot;!==typeof importScripts,ka=z&amp;&amp;&quot;PLAYSTATION 3&quot;===navigator.platform?/^complete$/:/^(complete|loaded)$/,
+Z=&quot;undefined&quot;!==typeof opera&amp;&amp;&quot;[object Opera]&quot;===opera.toString(),F={},r={},S=[],O=!1;if(&quot;undefined&quot;===typeof define){if(&quot;undefined&quot;!==typeof requirejs){if(G(requirejs))return;r=requirejs;requirejs=void 0}&quot;undefined&quot;!==typeof require&amp;&amp;!G(require)&amp;&amp;(r=require,require=void 0);h=requirejs=function(b,c,d,g){var u,m=&quot;_&quot;;!H(b)&amp;&amp;&quot;string&quot;!==typeof b&amp;&amp;(u=b,H(c)?(b=c,c=d,d=g):b=[]);u&amp;&amp;u.context&amp;&amp;(m=u.context);(g=j(F,m))||(g=F[m]=h.s.newContext(m));u&amp;&amp;g.configure(u);return g.require(b,c,d)};h.config=function(b){return h(b)};
+h.nextTick=&quot;undefined&quot;!==typeof setTimeout?function(b){setTimeout(b,4)}:function(b){b()};require||(require=h);h.version=&quot;2.1.10&quot;;h.jsExtRegExp=/^\/|:|\?|\.js$/;h.isBrowser=z;x=h.s={contexts:F,newContext:ha};h({});v([&quot;toUrl&quot;,&quot;undef&quot;,&quot;defined&quot;,&quot;specified&quot;],function(b){h[b]=function(){var c=F._;return c.require[b].apply(c,arguments)}});if(z&amp;&amp;(y=x.head=document.getElementsByTagName(&quot;head&quot;)[0],D=document.getElementsByTagName(&quot;base&quot;)[0]))y=x.head=D.parentNode;h.onError=da;h.createNode=function(b){var c=
+b.xhtml?document.createElementNS(&quot;http://www.w3.org/1999/xhtml&quot;,&quot;html:script&quot;):document.createElement(&quot;script&quot;);c.type=b.scriptType||&quot;text/javascript&quot;;c.charset=&quot;utf-8&quot;;c.async=!0;return c};h.load=function(b,c,d){var g=b&amp;&amp;b.config||{};if(z)return g=h.createNode(g,c,d),g.setAttribute(&quot;data-requirecontext&quot;,b.contextName),g.setAttribute(&quot;data-requiremodule&quot;,c),g.attachEvent&amp;&amp;!(g.attachEvent.toString&amp;&amp;0&gt;g.attachEvent.toString().indexOf(&quot;[native code&quot;))&amp;&amp;!Z?(O=!0,g.attachEvent(&quot;onreadystatechange&quot;,b.onScriptLoad)):
+(g.addEventListener(&quot;load&quot;,b.onScriptLoad,!1),g.addEventListener(&quot;error&quot;,b.onScriptError,!1)),g.src=d,M=g,D?y.insertBefore(g,D):y.appendChild(g),M=null,g;if(fa)try{importScripts(d),b.completeLoad(c)}catch(j){b.onError(C(&quot;importscripts&quot;,&quot;importScripts failed for &quot;+c+&quot; at &quot;+d,j,[c]))}};z&amp;&amp;!r.skipDataMain&amp;&amp;U(document.getElementsByTagName(&quot;script&quot;),function(b){y||(y=b.parentNode);if(L=b.getAttribute(&quot;data-main&quot;))return q=L,r.baseUrl||(E=q.split(&quot;/&quot;),q=E.pop(),Q=E.length?E.join(&quot;/&quot;)+&quot;/&quot;:&quot;./&quot;,r.baseUrl=
+Q),q=q.replace(R,&quot;&quot;),h.jsExtRegExp.test(q)&amp;&amp;(q=L),r.deps=r.deps?r.deps.concat(q):[q],!0});define=function(b,c,d){var g,h;&quot;string&quot;!==typeof b&amp;&amp;(d=c,c=b,b=null);H(c)||(d=c,c=null);!c&amp;&amp;G(d)&amp;&amp;(c=[],d.length&amp;&amp;(d.toString().replace(la,&quot;&quot;).replace(ma,function(b,d){c.push(d)}),c=(1===d.length?[&quot;require&quot;]:[&quot;require&quot;,&quot;exports&quot;,&quot;module&quot;]).concat(c)));if(O){if(!(g=M))P&amp;&amp;&quot;interactive&quot;===P.readyState||U(document.getElementsByTagName(&quot;script&quot;),function(b){if(&quot;interactive&quot;===b.readyState)return P=b}),g=P;g&amp;&amp;(b||
+(b=g.getAttribute(&quot;data-requiremodule&quot;)),h=F[g.getAttribute(&quot;data-requirecontext&quot;)])}(h?h.defQueue:S).push([b,c,d])};define.amd={jQuery:!0};h.exec=function(b){return eval(b)};h(r)}})(this);</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with<a href="https://github.com/FGRibreau/doxx">Doxx</a>created by<a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau</a></p>
+        <p>Doxx is sponsored by<a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr</a>and<a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="http://leaverou.github.com/prefixfree/prefixfree.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-affix.js"></script>
+    <script>
+      /**
+       * Prism: Lightweight, robust, elegant syntax highlighting
+       * MIT license http://www.opensource.org/licenses/mit-license.php/
+       * @author Lea Verou http://lea.verou.me
+       */(function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var i in e)e.hasOwnProperty(i)&&(r[i]=t.util.clone(e[i]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var i in n)r[i]=n[i];return r},insertBefore:function(e,n,r,i){i=i||t.languages;var s=i[e],o={};for(var u in s)if(s.hasOwnProperty(u)){if(u==n)for(var a in r)r.hasOwnProperty(a)&&(o[a]=r[a]);o[u]=s[u]}return i[e]=o},DFS:function(e,n){for(var r in e){n.call(e,r,e[r]);t.util.type(e)==="Object"&&t.languages.DFS(e[r],n)}}},highlightAll:function(e,n){var r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');for(var i=0,s;s=r[i++];)t.highlightElement(s,e===!0,n)},highlightElement:function(r,i,s){var o,u,a=r;while(a&&!e.test(a.className))a=a.parentNode;if(a){o=(a.className.match(e)||[,""])[1];u=t.languages[o]}if(!u)return;r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o;a=r.parentNode;/pre/i.test(a.nodeName)&&(a.className=a.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var f=r.textContent;if(!f)return;f=f.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\u00a0/g," ");var l={element:r,language:o,grammar:u,code:f};t.hooks.run("before-highlight",l);if(i&&self.Worker){var c=new Worker(t.filename);c.onmessage=function(e){l.highlightedCode=n.stringify(JSON.parse(e.data));l.element.innerHTML=l.highlightedCode;s&&s.call(l.element);t.hooks.run("after-highlight",l)};c.postMessage(JSON.stringify({language:l.language,code:l.code}))}else{l.highlightedCode=t.highlight(l.code,l.grammar);l.element.innerHTML=l.highlightedCode;s&&s.call(r);t.hooks.run("after-highlight",l)}},highlight:function(e,r){return n.stringify(t.tokenize(e,r))},tokenize:function(e,n){var r=t.Token,i=[e],s=n.rest;if(s){for(var o in s)n[o]=s[o];delete n.rest}e:for(var o in n){if(!n.hasOwnProperty(o)||!n[o])continue;var u=n[o],a=u.inside,f=!!u.lookbehind||0;u=u.pattern||u;for(var l=0;l<i.length;l++){var c=i[l];if(i.length>e.length)break e;if(c instanceof r)continue;u.lastIndex=0;var h=u.exec(c);if(h){f&&(f=h[1].length);var p=h.index-1+f,h=h[0].slice(f),d=h.length,v=p+d,m=c.slice(0,p+1),g=c.slice(v+1),y=[l,1];m&&y.push(m);var b=new r(o,a?t.tokenize(h,a):h);y.push(b);g&&y.push(g);Array.prototype.splice.apply(i,y)}}}return i},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[];r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(!r||!r.length)return;for(var i=0,s;s=r[i++];)s(n)}}},n=t.Token=function(e,t){this.type=e;this.content=t};n.stringify=function(e){if(typeof e=="string")return e;if(Object.prototype.toString.call(e)=="[object Array]"){for(var r=0;r<e.length;r++)e[r]=n.stringify(e[r]);return e.join("")}var i={type:e.type,content:n.stringify(e.content),tag:"span",classes:["token",e.type],attributes:{}};i.type=="comment"&&(i.attributes.spellcheck="true");t.hooks.run("wrap",i);var s="";for(var o in i.attributes)s+=o+'="'+(i.attributes[o]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+s+">"+i.content+"</"+i.tag+">"};if(!self.document){self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,i=n.code;self.postMessage(JSON.stringify(t.tokenize(i,t.languages[r])));self.close()},!1);return}var r=document.getElementsByTagName("script");r=r[r.length-1];if(r){t.filename=r.src;document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)}})();;
+      Prism.languages.markup={comment:/&lt;!--[\w\W]*?--(&gt;|&gt;)/g,prolog:/&lt;\?.+?\?&gt;/,doctype:/&lt;!DOCTYPE.+?&gt;/,cdata:/&lt;!\[CDATA\[[\w\W]+?]]&gt;/i,tag:{pattern:/&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?&gt;/gi,inside:{tag:{pattern:/^&lt;\/?[\w:-]+/i,inside:{punctuation:/^&lt;\/?/,namespace:/^[\w-]+?:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,inside:{punctuation:/=|&gt;|"/g}},punctuation:/\/?&gt;/g,"attr-name":{pattern:/[\w:-]+/g,inside:{namespace:/^[\w-]+?:/}}}},entity:/&amp;#?[\da-z]{1,8};/gi};Prism.hooks.add("wrap",function(e){e.type==="entity"&&(e.attributes.title=e.content.replace(/&amp;/,"&"))});;
+      Prism.languages.css={comment:/\/\*[\w\W]*?\*\//g,atrule:/@[\w-]+?(\s+[^;{]+)?(?=\s*{|\s*;)/gi,url:/url\((["']?).*?\1\)/gi,selector:/[^\{\}\s][^\{\}]*(?=\s*\{)/g,property:/(\b|\B)[a-z-]+(?=\s*:)/ig,string:/("|')(\\?.)*?\1/g,important:/\B!important\b/gi,ignore:/&(lt|gt|amp);/gi,punctuation:/[\{\};:]/g};Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{style:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.css}}});;
+      Prism.languages.clike={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},string:/("|')(\\?.)*?\1/g,keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,number:/\b-?(0x)?\d*\.?[\da-f]+\b/g,operator:/[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g,ignore:/&(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g};;
+      Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|catch|finally|null|break|continue)\b/g,number:/\b(-?(0x)?\d*\.?[\da-f]+|NaN|-?Infinity)\b/g});Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0}});Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}});;
+      
+    </script>
+    <!-- App js-->
+    <script>
+      $(function(){
+        var $window = $(window);
+        $('.scrollspy .nav').affix({
+          offset: {
+            top: function () { return $window.width() <= 980 ? 480 : 400 }
+          , bottom: 50
+          }
+        });
+      })
+    </script>
+  </body>
+</html>
