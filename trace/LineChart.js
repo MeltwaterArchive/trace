@@ -41,7 +41,8 @@ define([
 
 		this.lines = {};
 		this.areas = {};
-		this.paths = {};
+		this.linePaths = {};
+		this.areaPaths = {};
 		this.points = {};
 		this.series = [];
 		this.legend = [];
@@ -97,11 +98,17 @@ define([
 		// recalculate everything
 		this._calculate();
 
-		Object.keys(this.paths).forEach(function (path) {
-			this.paths[path].transition()
+		Object.keys(this.linePaths).forEach(function (path) {
+
+			this.linePaths[path].transition()
 				.duration(100)
 				.ease('linear')
 				.attr('d', this.lines[path](this.options.data[path]));
+
+			this.areaPaths[path].transition()
+				.duration(100)
+				.ease('linear')
+				.attr('d', this.areas[path](this.options.data[path]));
 
 			if (this.options.showpoints) {
 				this.points[path].data(this.options.data[path])
@@ -111,6 +118,7 @@ define([
 					.attr('cx', function (d, i) { return this.xfunc(d[0]); }.bind(this))
 					.attr('cy', function (d, i) { return this.yfunc(d[1]); }.bind(this));
 			}
+			
 		}.bind(this));
 
 		Trace.prototype._tick.call(this);
@@ -159,14 +167,14 @@ define([
 		Object.keys(this.lines).forEach(function (series, i) {
 			var color = this.colors(i);
 
-			this.paths[series] = this.chart.append('path')
+			this.linePaths[series] = this.chart.append('path')
 				.attr('d', this.lines[series](this.options.data[series]))
 				.attr('class', 'trace-' + series)
 				.attr('stroke', color)
 				.attr('stroke-width', '2px')
 				.attr('fill', 'none');
 
-			this.chart.append('path')
+			this.areaPaths[series] = this.chart.append('path')
 				.datum(this.options.data[series])
 				.attr('class', 'area')
 				.attr('d', this.areas[series])
