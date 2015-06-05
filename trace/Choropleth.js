@@ -2,10 +2,8 @@
 
 define([
 	'd3',
-	'topojson',
 	'./base',
-	'world'
-], function (d3, topojson, Trace, world) {
+], function (d3, Trace) {
 
 	'use strict';
 
@@ -31,7 +29,6 @@ define([
 
 		this._extend(this.options, {
 			'projection': 'mercator',
-			'mapping': world,
 			'colors': ['#EAA669', '#E67E22', '#B3621A', '#66482E', '#66380F']
 		}, options);
 
@@ -76,7 +73,7 @@ define([
 	};
 
 	/**
-	 * Build the line graph
+	 * Build the Choropleth graph
 	 *
 	 * @private
 	 * 
@@ -108,7 +105,6 @@ define([
 			.attr('fill', function (d) { 
 				return this.scale(this.map.get(d.properties.name.toLowerCase())); 
 			}.bind(this));
-
 	};
 
 	return Choropleth;

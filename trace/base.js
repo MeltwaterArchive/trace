@@ -58,6 +58,8 @@ define([
 			margin: [20,20,20,20],
 			xTickCount: 5,
 			yTickCount: 5,
+			xTickFormat: function (d) { return d; },
+			yTickFormat: function (d) { return d; },
 			zoom: false,
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
