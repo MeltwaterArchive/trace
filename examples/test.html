@@ -48,13 +48,11 @@
 
 			requirejs.config({
 				paths: {
-					d3: '../lib/d3',
-					topojson: '../lib/topojson',
-					world: '../lib/world'
+					d3: '../lib/d3'
 				}
 			});
 
-			require(['../trace', 'world'], function (Trace, world) {
+			require(['../trace'], function (Trace, world) {
 				var likert = new Trace.likert({
 					'div': '#likert',
 					'margin': [0, 0, 50, 50],
