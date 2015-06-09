@@ -58,7 +58,7 @@
     display: block;
     width: $size;
     height: $size;
-    background-image: url('images/icons/#{$filename}.png');
+    background-image: url('../images/icons/#{$filename}.png');
     background-siz: $size;
 }
 
