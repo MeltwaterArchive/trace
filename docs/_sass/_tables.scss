@@ -15,4 +15,8 @@ table {
 		border-bottom: none;
 	}
 
+	tr:nth-child(even) {
+		background: #fafafa;
+	}
+
 }
