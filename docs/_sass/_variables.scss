@@ -1,0 +1,51 @@
+/* --------------------------------------------------------
+	CONTENTS - VARIABLES
+	---
+	WIDTH ............................ Website width variables
+	COLOURS .......................... Website colour variables
+	GRID ............................. Grid variables
+	BRAND COLOURS .................... Brand colour variables
+-------------------------------------------------------- */
+
+/* --------------------------------------------------------
+	WIDTH
+-------------------------------------------------------- */
+
+$max-width: 940px;
+
+/* --------------------------------------------------------
+	COLOURS
+-------------------------------------------------------- */
+
+$text-color: #000032;
+$text-color-light: #b2b9bf;
+$border-color: #cad2d9;
+
+/* --------------------------------------------------------
+	GRID
+-------------------------------------------------------- */
+
+$grid-column-count: 12;
+$grid-column-width: 60px;
+$grid-gutter: 20px;
+/*$grid-columns: 12;
+$grid-breakpoint: 30em;*/
+
+/* --------------------------------------------------------
+	BRAND COLOURS
+-------------------------------------------------------- */
+
+/* Primary Colours */
+
+$datasift-orange: #FA7F36;
+$datasift-night-sky: #393943;
+
+/* Secondary Colours */
+
+$datasift-slate: #50626F;
+$datasift-blue: #42A7CA;
+$datasift-teal: #1FBAA6;
+$datasift-ash: #f0f0f0;
+$datasift-white: #fff;
+
+

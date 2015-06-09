@@ -1,236 +1,136 @@
-/**
- * Site header
- */
+/* --------------------------------------------------------
+    CONTENTS - LAYOUT
+    ---
+    CONTAINER ........................ Base `.container` structure
+    NAV .............................. Base `nav` structure
+    MAIN ............................. Base `main` structure
+    HEADER ........................... Base `header` structure
+    	ARTICLE HEADER ............... Base `header` structure within an `article` element
+    ISLAND ........................... Generic `.island` object
+    ARTICLE .......................... Base `article` structure
+    FOOTNOTES ........................ Base `article` structure
+    SWATCHES ......................... Base `.swatches` structure
+    DOS AND DONTS .................... Base `.do-and-donts` structure
+    COPYRIGHT ........................ Base `.copyright` structure
+-------------------------------------------------------- */
+
+/* --------------------------------------------------------
+	CONTAINER
+-------------------------------------------------------- */
+
+.content-width {
+	margin: 0 auto;
+	width: $max-width;
+	position: relative;
+}
+
+/* --------------------------------------------------------
+	HEADER
+-------------------------------------------------------- */
+
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
-
-    // Positioning context for the mobile navigation icon
-    position: relative;
+	background: $datasift-night-sky;
+	height: 2em;
 }
 
-.site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
+/* --------------------------------------------------------
+	NAV
+-------------------------------------------------------- */
 
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
+nav {
+	padding-top: 4em;
+	position: fixed;
+	width: 200px;
+
+	ul {
+		@extend .plain-ul;
+
+		li {
+			padding: .5em 0;
+			border-bottom: 1px solid $border-color;
+		}
+
+	}
+
 }
 
-.site-nav {
-    float: right;
-    line-height: 56px;
+/* --------------------------------------------------------
+	MAIN
+-------------------------------------------------------- */
 
-    .menu-icon {
-        display: none;
-    }
+main {}
 
-    .page-link {
-        color: $text-color;
-        line-height: $base-line-height;
+/* --------------------------------------------------------
+	HEADER
+-------------------------------------------------------- */
 
-        // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
-            margin-left: 20px;
-        }
-    }
+header {}
 
-    @include media-query($on-palm) {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
-        text-align: right;
+article header {
+	position: relative;
+	padding: 2em 0;
 
-        .menu-icon {
-            display: block;
-            float: right;
-            width: 36px;
-            height: 26px;
-            line-height: 0;
-            padding-top: 10px;
-            text-align: center;
+	.anchor {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -8px;
+	}
 
-            > svg {
-                width: 18px;
-                height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
-            }
-        }
-
-        .trigger {
-            clear: both;
-            display: none;
-        }
-
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .page-link {
-            display: block;
-            padding: 5px 10px;
-        }
-    }
 }
 
+/* --------------------------------------------------------
+	ISLAND
+	---
+	Generic island object
+-------------------------------------------------------- */
 
-
-/**
- * Site footer
- */
-.site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+.island {
+	margin-bottom: 2em;
 }
 
-.footer-heading {
-    font-size: 18px;
-    margin-bottom: $spacing-unit / 2;
+/* --------------------------------------------------------
+	ARTICLE
+	---
+	A generic article object
+-------------------------------------------------------- */
+
+.article {
+
 }
 
-.contact-list,
-.social-media-list {
-    list-style: none;
-    margin-left: 0;
+.chart-types {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+	border: 1px solid $datasift-ash;
+	border-left: none;
+	border-bottom: none;
+	overflow: hidden;
+
+	li {
+		width: 50%;
+		float: left;
+		box-sizing: border-box;
+		border-left: 1px solid $datasift-ash;
+		border-bottom: 1px solid $datasift-ash;
+		padding: 10px;
+	}
 }
 
-.footer-col-wrapper {
-    font-size: 15px;
-    color: $grey-color;
-    margin-left: -$spacing-unit / 2;
-    @extend %clearfix;
-}
+/* --------------------------------------------------------
+	FOOTNOTES
+-------------------------------------------------------- */
 
-.footer-col {
-    float: left;
-    margin-bottom: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-}
+article footer {
+	border-top: 1px solid $border-color;
+	padding: 1em 0;
+	margin: 2em 0 0 0;
+	color: $text-color-light;
 
-.footer-col-1 {
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-laptop) {
-    .footer-col-1,
-    .footer-col-2 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
-    }
-
-    .footer-col-3 {
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
-}
-
-@include media-query($on-palm) {
-    .footer-col {
-        float: none;
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
-}
-
-
-
-/**
- * Page content
- */
-.page-content {
-    padding: $spacing-unit 0;
-}
-
-.page-heading {
-    font-size: 20px;
-}
-
-.post-list {
-    margin-left: 0;
-    list-style: none;
-
-    > li {
-        margin-bottom: $spacing-unit;
-    }
-}
-
-.post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
-}
-
-.post-link {
-    display: block;
-    font-size: 24px;
-}
-
-
-
-/**
- * Posts
- */
-.post-header {
-    margin-bottom: $spacing-unit;
-}
-
-.post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
-
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
-}
-
-.post-content {
-    margin-bottom: $spacing-unit;
-
-    h2 {
-        font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
-    }
-
-    h3 {
-        font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
-
-    h4 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
-    }
+	p,
+	ul {
+		font-size: .875em;
+		margin: 0;
+	}
 }

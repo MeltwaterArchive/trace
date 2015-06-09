@@ -2,42 +2,14 @@
 layout: default
 ---
 
+#Trace
 
+{% for article in site.articles %}
+<article id="{% if article.id %}{{ article.id | downcase | replace:' ','-' }}{% else %}{{ article.title | downcase | replace:' ','-' }}{% endif %}" class="{% if forloop.first %}first{% endif %}">
 
-<div id="lineChart">
-</div>
+    <h2>{{ article.title }}</h2>
+    <a class="icon anchor" href="#{% if article.id %}{{ article.id | downcase | replace:' ','-' }}{% else %}{{ article.title | downcase | replace:' ','-' }}{% endif %}" data-tip="Direct link"></a>
 
-<script type="text/javascript">
-  var r = new Random();
-
-  var chart = new Trace.lineChart({
-    'div': '#lineChart',
-    'width': 500,
-    'height': 250,
-    'data': {
-      'a': r.getSeries()
-    }
-  });
-
-  setInterval(function () {
-    chart.update({
-      'a': r.getSeries()
-    });
-  }, 500);
-
-
-</script>
-
-Trace is a dynamic JavaScript charting library which utilises <a href="http://d3js.org">d3</a>. It supports a wide variety of data and is easily extensible with new graph types.
-
-##Getting Started
-
-##Examples
-
-<ul class="post-list">
-    {% for post in site.categories.examples %}
-        <li>
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </li>
-    {% endfor %}
-</ul>
+    {{ article.content }}
+</article>
+{% endfor %}

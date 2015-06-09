@@ -1,0 +1,29 @@
+/* --------------------------------------------------------
+	CONTENTS - TYPOGRAPHY
+ 	---
+	HEADINGS ......................... Base styles for all headings
+	PARAGRAPHS ....................... Base styles for all paragraphs
+-------------------------------------------------------- */
+
+/* --------------------------------------------------------
+	HEADINGS
+-------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+	margin: 1em 0;
+}
+
+p {
+	margin: 0 0 2em 0;
+}
+
+a {
+	color: $datasift-orange;
+	text-decoration: none;
+}

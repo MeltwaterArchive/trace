@@ -1,0 +1,18 @@
+table {
+	border: 1px solid $datasift-ash;
+
+	td, th {
+		border-right: 1px solid $datasift-ash;
+		border-bottom: 1px solid $datasift-ash;
+		padding: 5px;
+	}
+
+	tr td:last-child {
+		border-right: none;
+	}
+
+	tr:last-child td {
+		border-bottom: none;
+	}
+
+}
