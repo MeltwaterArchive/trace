@@ -4,3 +4,8 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 
 # Build settings
 markdown: kramdown
+
+# Organising the articles
+collections:
+  articles:
+    output: true
