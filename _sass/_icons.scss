@@ -4,6 +4,8 @@
 
 .anchor {
 	@include icon(16px, anchor-16);
+	float: left;
+	margin: 5px 10px 0 0;
 }
 
 .download {

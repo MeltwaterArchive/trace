@@ -7,19 +7,19 @@ title: Getting Started
 <ul class="chart-types">
 	<li>
 		<div id="type-linechart"></div>
-		<a class="title" href="line-chart">Line Chart</a>
+		<a class="title" href="#line-chart">Line Chart</a>
 	</li>
 	<li>
 		<div id="type-barchart"></div>
-		<a class="title" href="bar-chart">Bar Chart</a>
+		<a class="title" href="#bar-chart">Bar Chart</a>
 	</li>
 	<li>
 		<div id="type-piechart"></div>
-		<a class="title" href="pie-chart">Pie Chart</a>
+		<a class="title" href="#pie-chart">Pie Chart</a>
 	</li>
 	<li>
 		<div id="type-likertchart"></div>
-		<a class="title" href="#divergin-bar-chart">Diverging Bar Chart</a>
+		<a class="title" href="#diverging-bar-chart">Diverging Bar Chart</a>
 	</li>
 </ul>
 

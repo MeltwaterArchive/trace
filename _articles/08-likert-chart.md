@@ -2,6 +2,8 @@
 title: Diverging Bar Chart
 ---
 
+Also known as a Tornado Chart, the Diverging Bar allow you to compare 2 sets of data across a common set of criteria.
+
 `new Trace.likert(options)`
 
 ### Options
@@ -43,7 +45,10 @@ The Diverging bar chart uses a slightly different format for the data object.
 	};
 	new Trace.likert({
 		'div': '#likert-example',
-		'data': data
+		'data': data,
+		'width': 695,
+		'legend': false,
+		'height': 200
 	});
 
 })();

@@ -2,7 +2,9 @@
 title: Introduction
 ---
 
-Trace is a dynamic JavaScript charting library which utilises <a href="http://d3js.org">d3</a>. It supports a wide variety of data and is easily extensible with new graph types.
+Trace is a dynamic JavaScript charting library which utilises <a href="http://d3js.org">d3</a>. It supports a wide variety of data and is easily extensible with new graph types. Trace is less than 20kb (even smaller when gzipped).
+
+<a class="btn" href="https://raw.githubusercontent.com/datasift/trace/master/trace-min.js">Download (v0.1)</a>
 
 ##tldr;
 
@@ -33,6 +35,7 @@ new Trace.lineChart({
   'div': '#mychart',
   'width': 695,
   'height': 200,
+  'legend': false,
   'data': {
     'series1': [[0,0],[1,2],[2,4],[3,6]]
   }
