@@ -11,7 +11,7 @@ define([
 	 * # Likert
 	 * Renders a bar chart, or a stacked bar chart depending on the number of series supplied
 	 *
-	 * This is highly influanced by (NVD3 Multi Bar Horizontal)[https://github.com/novus/nvd3/blob/master/src/models/multiBarHorizontal.js] 
+	 * This is highly influanced by (NVD3 Multi Bar Horizontal)[https://github.com/novus/nvd3/blob/master/src/models/multiBarHorizontal.js]
 	 * however our chart will only ever accept positive numbers.
 	 *
 	 * ## Usage
@@ -20,10 +20,11 @@ define([
 	 * ## Options
 	 * - `showx`: Show or hide the X axis, defaults to `true`
 	 * - `showy`: Show or hide the Y axis, defualts to `true`
-	 * 
+	 * - `rectpadding`: The padding the main rect has to appear thinner, compared to the baseline rect
+	 *
 	 * @class  BarChart
 	 * @constructor
-	 * 
+	 *
 	 * @param {[type]} options [description]
 	 */
 	var Likert = function (options) {
@@ -32,6 +33,7 @@ define([
 		this._extend(this.options, {
 			showx: true,
 			showy: true,
+			rectpadding: 3,
 			gridlines: true
 		}, options);
 
@@ -50,7 +52,7 @@ define([
 	 * Calculate the x and y functions
 	 *
 	 * We use the d3.layout.stack() and modify the data to be in the correct format
-	 * 
+	 *
 	 * @private
 	 */
 	Likert.prototype._calculate = function () {
@@ -97,7 +99,7 @@ define([
 
 		// determine the values we are going to use for the transform
 		this.mappedData[0].values.map(function (d, i) {
-			var posBase = 0, 
+			var posBase = 0,
 				negBase = 0,
 				posBaseLineBase = 0,
 				negBaseLineBase = 0;
@@ -147,7 +149,7 @@ define([
 				return d.y > 0 ? d.y1 + d.y : d.y1;
 			} else {
 				return d.b > 0 ? d.b1 + d.b : d.b1;
-			}			
+			}
 		})));
 
 		this.yfunc.range([0, width - margin[1] - margin[3]]);
@@ -162,7 +164,8 @@ define([
 
 		var margin = this.options.margin,
 			height = this.options.height,
-			width = this.options.width;
+			width = this.options.width,
+			rectPadding = this.options.rectpadding;
 
 		// build the SVG wrapper
 		this.chart = d3.select(this.options.div)
@@ -192,14 +195,14 @@ define([
 		.enter()
 			.append('g')
 			 	.attr('transform', function (d,i,j) {
-					return 'translate(' + this.yfunc(d.y1) + ',' + this.xfunc(d.label) + ')';
+					return 'translate(' + this.yfunc(d.y1) + ',' + (this.xfunc(d.label) + rectPadding) + ')';
 				}.bind(this))
 				.append('rect')
 					.attr('class', 'y1')
 					.attr('width', function (d, i) {
 						return Math.abs(this.yfunc(d.value + d.y0) - this.yfunc(d.y0));
 					}.bind(this))
-					.attr('height', this.xfunc.rangeBand())
+					.attr('height', this.xfunc.rangeBand() - (rectPadding * 2))
 					.on('mouseover', this._mouseover.bind(this))
 					.on('mouseout', this._mouseout.bind(this));
 
@@ -222,7 +225,7 @@ define([
 					.attr('height', this.xfunc.rangeBand())
 					.on('mouseover', this._mouseover.bind(this))
 					.on('mouseout', this._mouseout.bind(this));
-			
+
 		// lets flip the axis so we can use our parents renderer
 		var tempy = this.yfunc, tempx = this.xfunc;
 		this.yfunc = tempx; this.xfunc = tempy;
