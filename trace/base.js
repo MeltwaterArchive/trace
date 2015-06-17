@@ -170,7 +170,7 @@ define([
 			return;
 		}
 
-		if (this.tooltip) {
+		if (this.options.tooltips) {
 			this.tooltip = document.createElement('div');
 			this.tooltip.className = 'trace-tooltip';
 			this.tooltip.innerHTML = this.options.tooltips(evt);
@@ -291,7 +291,7 @@ define([
 			.append('div')
 			.attr('class', 'label')
 			.html(function (d, i) {
-				return '<div class="key" style="border-color:' + this.colors(i) + '">' + d + '</div>';
+				return '<div class="key" style="border-left: 5px solid ' + this.colors(i) + '">' + d + '</div>';
 			}.bind(this));
 	};
 

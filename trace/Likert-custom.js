@@ -199,7 +199,9 @@ define([
 					.attr('width', function (d, i) {
 						return Math.abs(this.yfunc(d.value + d.y0) - this.yfunc(d.y0));
 					}.bind(this))
-					.attr('height', this.xfunc.rangeBand());
+					.attr('height', this.xfunc.rangeBand())
+					.on('mouseover', this._mouseover.bind(this))
+					.on('mouseout', this._mouseout.bind(this));
 
 		// build a baseline rect
 		this.baselinerect = this.group.selectAll('rect.y2')
@@ -217,7 +219,9 @@ define([
 					.attr('width', function (d, i) {
 						return Math.abs(this.yfunc(d.baseline + d.y0) - this.yfunc(d.y0));
 					}.bind(this))
-					.attr('height', this.xfunc.rangeBand());
+					.attr('height', this.xfunc.rangeBand())
+					.on('mouseover', this._mouseover.bind(this))
+					.on('mouseout', this._mouseout.bind(this));
 			
 		// lets flip the axis so we can use our parents renderer
 		var tempy = this.yfunc, tempx = this.xfunc;
