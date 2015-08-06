@@ -32,7 +32,7 @@ define([
 	 * - **colors**: An `Array` of hex colours
 	 *
 	 * ## Formatting Tooltips
-	 * The parameter allows you to easily format the tooltips. The function is passed an arr with 
+	 * The parameter allows you to easily format the tooltips. The function is passed an arr with
 	 * the first index being the `x` value and the second being the `y` value.
 	 *
 	 *     new Trace.lineGraph({
@@ -41,10 +41,14 @@ define([
 	 *     			return 'x:' + vals[0] + ' y:' + vals[1];
 	 *     		}
 	 *     });
-	 * 
+	 *
 	 * @param {Object} options [description]
 	 */
 	var Trace = function (options) {
+
+		this.emptyFunction = function (d) {
+			return d;
+		};
 
 		this.options = {
 			data: {},
@@ -58,8 +62,8 @@ define([
 			margin: [20,20,20,20],
 			xTickCount: 5,
 			yTickCount: 5,
-			xTickFormat: function (d) { return d; },
-			yTickFormat: function (d) { return d; },
+			xTickFormat: this.emptyFunction,
+			yTickFormat: this.emptyFunction,
 			zoom: false,
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
@@ -69,7 +73,7 @@ define([
 	 * ## Update
 	 * Update the chart with a new set of data. The chart will transition to the new data points.
 	 *
-	 * If you are showing scales and gridlines, updating the data will cause the scales and 
+	 * If you are showing scales and gridlines, updating the data will cause the scales and
 	 * gridlines to be altered accordingly.
 	 *
 	 * ### Dynamic Chart
@@ -90,7 +94,7 @@ define([
 	 * 	   		});
 	 * 	   		linegraph.update(data);
 	 * 	   }, 1000);
-	 * 
+	 *
 	 * @param  {Object} data See @Trace
 	 * @return {[type]}      [description]
 	 */
@@ -104,7 +108,7 @@ define([
 
 	/**
 	 * Uses the d3 ordinal scale to cycle through a set number of colours
-	 * 
+	 *
 	 * @param  {Int} i The current item
 	 */
 	Trace.prototype.colors = function (i) {
@@ -128,7 +132,7 @@ define([
 	 * Get the extremes of the data range
 	 *
 	 * @private
-	 * 
+	 *
 	 * @param  {Object} data	The data to search
 	 * @param  {Int}	i		The index we want to look at
 	 * @param  {String} type	The type of comparison (see d3 docs for more info)
@@ -203,7 +207,7 @@ define([
 	 *
 	 * @todo This could be down a lot better, currently this will flickr if you hover
 	 * the tooltip
-	 * 
+	 *
 	 * @param  {Object} evt mouse out event
 	 */
 	Trace.prototype._mouseout = function (evt) {

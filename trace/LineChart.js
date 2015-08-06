@@ -20,10 +20,10 @@ define([
 	 * - `showpoints`: Show the points on the line
 	 * - `interpolate`: Type of line interpolation (whether it's curved or straight) see https://github.com/mbostock/d3/wiki/SVG-Shapes#line_interpolate
 	 * - `brush`: This will enable drag selections of the line chart. This is a function which accepts a single element of the extent, the x0 and x1 positions of the brush box.
-	 * 
+	 *
 	 * @class  LineGraph
 	 * @constructor
-	 * 
+	 *
 	 * @param {[type]} options [description]
 	 */
 	var LineGraph = function (options) {
@@ -79,10 +79,31 @@ define([
 
 		minY = toString.call(minY) === '[object Date]' ? minY : minY > 0 ? 0 : minY;
 
-		this.xfunc = toString.call(minX) === '[object Date]' ? d3.time.scale() : d3.scale.linear();
+		// determine if we are dealing with dates, we want to use a more
+		// intelligent tick formatter than the default (it's a big ugly)
+		
+		// xfunc
+		if (toString.call(minX) === '[object Date]') {
+			this.xfunc = d3.time.scale();
+			// change the tick formatter
+			if (this.options.xTickFormat === this.emptyFunction) {
+				this.options.xTickFormat = d3.format('s');
+			}
+		} else {
+			this.xfunc = d3.scale.linear();
+		}
 		this.xfunc.domain([minX, maxX]).range([0, width - margin[1] - margin[3]]);
 
-		this.yfunc = toString.call(maxY) === '[object Date]' ? d3.time.scale() : d3.scale.linear();
+		// yfunc
+		if (toString.call(maxY) === '[object Date]') {
+			this.yfunc = d3.time.scale();
+			// change the tick formatter
+			if (this.options.yTickFormat === this.emptyFunction) {
+				this.options.yTickFormat = d3.format('s');
+			}
+		} else {
+			this.yfunc = d3.scale.linear();
+		}
 		this.yfunc.domain([minY, maxY]).range([height - margin[0] - margin[2], 0]);
 	};
 
@@ -90,7 +111,7 @@ define([
 	 * Tick the graph when we get new data.
 	 *
 	 * We also have to tick the axis. If we have points, those need to be moved as well
-	 * 
+	 *
 	 * @private
 	 */
 	LineGraph.prototype._tick = function () {
@@ -118,7 +139,7 @@ define([
 					.attr('cx', function (d, i) { return this.xfunc(d[0]); }.bind(this))
 					.attr('cy', function (d, i) { return this.yfunc(d[1]); }.bind(this));
 			}
-			
+
 		}.bind(this));
 
 		Trace.prototype._tick.call(this);
@@ -126,7 +147,7 @@ define([
 
 	/**
 	 * Draw the chart. We draw each line and each axis
-	 * 
+	 *
 	 * @private
 	 */
 	LineGraph.prototype._draw = function () {
@@ -149,11 +170,11 @@ define([
 		// for each series build in the line
 		this.series.forEach(function (s) {
 			this.lines[s] = d3.svg.line()
-				.x(function (value) { 
-					return value[0] ? this.xfunc(value[0]) : this.xfunc(0); 
+				.x(function (value) {
+					return value[0] ? this.xfunc(value[0]) : this.xfunc(0);
 				}.bind(this))
-				.y(function (value) { 
-					return value[1] ? this.yfunc(value[1]) : this.yfunc(0); 
+				.y(function (value) {
+					return value[1] ? this.yfunc(value[1]) : this.yfunc(0);
 				}.bind(this))
 				.interpolate(this.options.interpolate);
 
@@ -219,7 +240,7 @@ define([
 	 * Build the line graph
 	 *
 	 * @private
-	 * 
+	 *
 	 * @return {[type]} [description]
 	 */
 	LineGraph.prototype._build = function () {
