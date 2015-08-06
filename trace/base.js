@@ -291,7 +291,7 @@ define([
 			.append('div')
 			.attr('class', 'label')
 			.html(function (d, i) {
-				return '<div class="key" style="border-color:' + this.colors(i) + '">' + d + '</div>';
+				return '<div class="key" style="border-left: 5px solid ' + this.colors(i) + '">' + d + '</div>';
 			}.bind(this));
 	};
 

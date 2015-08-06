@@ -6,7 +6,7 @@
 	"include": ["../tools/almond", "trace"],
 	"exclude": ["d3"],
 	"out": "../trace-min.js",
-	"preserveLicenseComments": false,
+	"preserveLicenseComments": true,
 	"wrap": {
 		"startFile": "wrap.start",
 		"endFile": "wrap.end"
