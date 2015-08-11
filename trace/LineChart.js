@@ -81,29 +81,11 @@ define([
 
 		// determine if we are dealing with dates, we want to use a more
 		// intelligent tick formatter than the default (it's a big ugly)
-		
-		// xfunc
-		if (toString.call(minX) === '[object Date]') {
-			this.xfunc = d3.time.scale();
-			// change the tick formatter
-			if (this.options.xTickFormat === this.emptyFunction) {
-				this.options.xTickFormat = d3.format('s');
-			}
-		} else {
-			this.xfunc = d3.scale.linear();
-		}
+
+		this.xfunc = toString.call(minX) === '[object Date]' ? d3.time.scale() : d3.scale.linear();
 		this.xfunc.domain([minX, maxX]).range([0, width - margin[1] - margin[3]]);
 
-		// yfunc
-		if (toString.call(maxY) === '[object Date]') {
-			this.yfunc = d3.time.scale();
-			// change the tick formatter
-			if (this.options.yTickFormat === this.emptyFunction) {
-				this.options.yTickFormat = d3.format('s');
-			}
-		} else {
-			this.yfunc = d3.scale.linear();
-		}
+		this.yfunc = toString.call(maxY) === '[object Date]' ? d3.time.scale() : d3.scale.linear();
 		this.yfunc.domain([minY, maxY]).range([height - margin[0] - margin[2], 0]);
 	};
 
