@@ -1,0 +1,22 @@
+{
+  "name": "trace",
+  "version": "0.0.1",
+  "homepage": "https://github.com/datasift/trace",
+  "authors": [
+    "dtsn <daniel@saxil-nielsen.com>"
+  ],
+  "description": "Charting library based on d3",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "**/*.zip",
+    "Gruntfile.js",
+    "package.json",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "docs"
+  ],
+  "main": "trace.js"
+}
