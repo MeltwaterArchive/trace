@@ -62,8 +62,8 @@ define([
 			margin: [20,20,20,20],
 			xTickCount: null,
 			yTickCount: null,
-			xTickFormat: this.emptyFunction,
-			yTickFormat: this.emptyFunction,
+			xTickFormat: null,
+			yTickFormat: null,
 			zoom: false,
 			colors: ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6']
 		};
@@ -174,11 +174,11 @@ define([
 			return;
 		}
 
-		if (this.tooltip) {
+		if (this.options.tooltips) {
 			this.tooltip = document.createElement('div');
 			this.tooltip.className = 'trace-tooltip';
 			this.tooltip.innerHTML = this.options.tooltips(evt);
-			this.tooltip.style.left = (d3.event.clientX + window.scrollX) + 'px';
+			this.tooltip.style.left = (d3.event.clientX + window.scrollX + 10) + 'px';
 			this.tooltip.style.top = (d3.event.clientY + window.scrollY) + 'px';
 			document.body.appendChild(this.tooltip);
 		}
@@ -269,11 +269,10 @@ define([
 		}
 
 		// render the tooltips
-		if (this.options.tooltip) {
+		if (this.options.tooltips) {
 			if (!this.options.points) {
 				throw 'Tooltips require points to be set';
 			}
-			this._tooltips();
 		}
 	};
 

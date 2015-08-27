@@ -17,10 +17,10 @@ define([
 	 * ## Options
 	 * - `showx`: Show or hide the X axis, defaults to `true`
 	 * - `showy`: Show or hide the Y axis, defualts to `true`
-	 * 
+	 *
 	 * @class  BarChart
 	 * @constructor
-	 * 
+	 *
 	 * @param {[type]} options [description]
 	 */
 	var BarChart = function (options) {
@@ -47,7 +47,7 @@ define([
 	 * Calculate the x and y functions
 	 *
 	 * We use the d3.layout.stack() and modify the data to be in the correct format
-	 * 
+	 *
 	 * @private
 	 */
 	BarChart.prototype._calculate = function () {
@@ -88,14 +88,14 @@ define([
 				return { x: d[0], y: +d[1], series: series };
 			});*/
 		}.bind(this));
-		
+
 		this.stacked = d3.layout.stack()(this.mappedData);
 
 		this.xfunc = d3.scale.ordinal().rangeRoundBands([0, width - margin[1] - margin[3]], 0.1);
 		this.yfunc = d3.scale.linear().range([height - margin[0] - margin[2], 0]);
 
 		this.xfunc.domain(this.stacked[0].map(function (d) { return d.x; }));
-		
+
 		var minnums = [], maxnums = [];
 		this.stacked.forEach(function (section) {
 			section.forEach(function (obj) {

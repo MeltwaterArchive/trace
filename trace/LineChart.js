@@ -194,8 +194,20 @@ define([
 					.attr('cx', function (d, i) { return this.xfunc(d[0]); }.bind(this))
 					.attr('cy', function (d, i) { return this.yfunc(d[1]); }.bind(this))
 					.attr('r', function (d, i) { return 3; })
-					.on('mouseover', this._mouseover.bind(this))
-					.on('mouseout', this._mouseout.bind(this));
+					.attr('style', 'cursor:pointer');
+
+				this.points[series] = this.chart.selectAll('.point')
+						.data(this.options.data[series])
+					.enter().append('circle')
+						.attr('fill', 'white')
+						.attr('opacity', 0)
+						.attr('class', 'trace-' + series)
+						.attr('cx', function (d, i) { return this.xfunc(d[0]); }.bind(this))
+						.attr('cy', function (d, i) { return this.yfunc(d[1]); }.bind(this))
+						.attr('r', function (d, i) { return 6; })
+						.attr('style', 'cursor:pointer')
+						.on('mouseover', this._mouseover.bind(this))
+						.on('mouseout', this._mouseout.bind(this));
 			}
 		}.bind(this));
 
