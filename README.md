@@ -3,6 +3,14 @@
 Trace is a dynamic JavaScript charting library which utilises [d3](http://d3js.org). It supports a wide
 variety of data and is easily extensible with new graph types.
 
+## Quick start
+
+Several quick start options are available:
+
+- [Download the latest release](https://github.com/datasift/trace/releases).
+- Clone the repo: `git clone https://github.com/datasift/trace.git`.
+- Install with [npm](https://www.npmjs.com): `npm install datasift-trace`.
+
 ## Usage
 
 Trace is very easy to use, it has one depency on [d3](http://d3js.org). The `d3` object needs to be visble to the library, if you using requirejs you can do this by setting the paths e.g.:
@@ -61,7 +69,7 @@ In addition to the standard options that are available with Trace there these sp
 - **showx**: Show or hide the X axis, defaults to `true`
 - **showy**: Show or hide the Y axis, defaults to `true`
 - **showpoints**: Show the points on the line
-- **interpolate**: Type of line interpolation (whether it's curved or straight) see https://github.com/mbostock/d3/wiki/SVG-Shapes#line_interpolate 
+- **interpolate**: Type of line interpolation (whether it's curved or straight) see https://github.com/mbostock/d3/wiki/SVG-Shapes#line_interpolate
 
 ### Bar Chart
 
