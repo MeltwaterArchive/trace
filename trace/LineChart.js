@@ -39,6 +39,8 @@ define([
 			brush: false
 		}, options);
 
+		this.__parent__ = Trace;
+
 		this.lines = {};
 		this.areas = {};
 		this.linePaths = {};

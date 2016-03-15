@@ -35,6 +35,8 @@ define([
 			gridlines: true
 		}, options);
 
+		this.__parent__ = Trace;
+
 		this._build();
 	};
 
