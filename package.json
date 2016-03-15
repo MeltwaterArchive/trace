@@ -1,6 +1,6 @@
 {
   "name": "datasift-trace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Trace is a dynamic JavaScript charting library which utilises [d3](http://d3js.org). It supports a wide variety of data and is easily extensible with new graph types.",
   "main": "trace.js",
   "repository": {
