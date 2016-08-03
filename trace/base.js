@@ -114,7 +114,7 @@ define([
 	Trace.prototype.colors = function (i) {
 		if (!this.colorScale) {
 			// convert the colour scale
-			this.colorScale = d3.scale.ordinal().range(this.options.colors);
+			this.colorScale = d3.scaleOrdinal().range(this.options.colors);
 		}
 		return this.colorScale(i);
 	};
@@ -150,11 +150,11 @@ define([
 
 	Trace.prototype._tick = function () {
 		if (this.xaxis) {
-			this.xaxis.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(this.options.xTickFormat));
+			this.xaxis.call(d3.axis().scale(this.xfunc).orient('bottom').ticks(5).tickFormat(this.options.xTickFormat));
 		}
 
 		if (this.yaxis) {
-			this.yaxis.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(this.options.yTickFormat));
+			this.yaxis.call(d3.axis().scale(this.yfunc).orient('left').ticks(5).tickFormat(this.options.yTickFormat));
 		}
 
 		if (this.options.gridlines) {
@@ -230,7 +230,7 @@ define([
 			this.xaxis = this.chart.append('g')
 				.attr('class', 'trace-xaxis')
 				.attr('transform', 'translate(0,' + (this.options.height - this.options.margin[0] - this.options.margin[2]) + ')')
-				.call(d3.svg.axis().scale(this.xfunc).orient('bottom').ticks(this.options.xTickCount).tickFormat(this.options.xTickFormat));
+				.call(d3.axisBottom(this.xfunc).ticks(this.options.xTickCount).tickFormat(this.options.xTickFormat));
 		}
 
 		// yaxis
@@ -238,7 +238,7 @@ define([
 			this.yaxis = this.chart.append('g')
 				.attr('class', 'trace-yaxis left')
 				.attr('transform', 'translate(0,0)')
-				.call(d3.svg.axis().scale(this.yfunc).orient('left').ticks(this.options.yTickCount).tickFormat(this.options.yTickFormat));
+				.call(d3.axisLeft(this.yfunc).ticks(this.options.yTickCount).tickFormat(this.options.yTickFormat));
 		}
 
 		// second y axis
@@ -246,7 +246,7 @@ define([
 			this.yaxis2 = this.chart.append('g')
 				.attr('class', 'trace-yaxis right')
 				.attr('transform', 'translate(' + (this.options.width - this.options.margin[1] - this.options.margin[3]) + ',0)')
-				.call(d3.svg.axis().scale(this.yfunc).orient('right').ticks(this.options.yTickCount).tickFormat(this.options.yTickFormat));
+				.call(d3.axisRight(this.yfunc).ticks(this.options.yTickCount).tickFormat(this.options.yTickFormat));
 		}
 
 		// gridline

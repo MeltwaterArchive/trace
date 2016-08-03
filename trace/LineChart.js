@@ -34,9 +34,10 @@ define([
 			showx: true,
 			showy: true,
 			showpoints: true,
-			interpolate: 'linear',
+			interpolate: d3.curveLinear,
 			gridlines: true,
-			brush: false
+			brush: false,
+			showArea: true
 		}, options);
 
 		this.__parent__ = Trace;
@@ -84,10 +85,10 @@ define([
 		// determine if we are dealing with dates, we want to use a more
 		// intelligent tick formatter than the default (it's a big ugly)
 
-		this.xfunc = toString.call(minX) === '[object Date]' ? d3.time.scale() : d3.scale.linear();
+		this.xfunc = toString.call(minX) === '[object Date]' ? d3.scaleTime() : d3.scaleLinear();
 		this.xfunc.domain([minX, maxX]).range([0, width - margin[1] - margin[3]]);
 
-		this.yfunc = toString.call(maxY) === '[object Date]' ? d3.time.scale() : d3.scale.linear();
+		this.yfunc = toString.call(maxY) === '[object Date]' ? d3.scaleTime() : d3.scaleLinear();
 		this.yfunc.domain([minY, maxY]).range([height - margin[0] - margin[2], 0]);
 	};
 
@@ -153,16 +154,16 @@ define([
 
 		// for each series build in the line
 		this.series.forEach(function (s) {
-			this.lines[s] = d3.svg.line()
+			this.lines[s] = d3.line()
 				.x(function (value) {
 					return value[0] ? this.xfunc(value[0]) : this.xfunc(0);
 				}.bind(this))
 				.y(function (value) {
 					return value[1] ? this.yfunc(value[1]) : this.yfunc(0);
 				}.bind(this))
-				.interpolate(this.options.interpolate);
+				.curve(this.options.interpolate);
 
-			this.areas[s] = d3.svg.area()
+			this.areas[s] = d3.area()
 				.x(function (d) { return this.xfunc(d[0]); }.bind(this))
     			.y0(height - margin[0] - margin[2])
     			.y1(function (d) { return this.yfunc(d[1]); }.bind(this));
@@ -179,12 +180,14 @@ define([
 				.attr('stroke-width', '2px')
 				.attr('fill', 'none');
 
-			this.areaPaths[series] = this.chart.append('path')
-				.datum(this.options.data[series])
-				.attr('class', 'area')
-				.attr('d', this.areas[series])
-				.attr('fill', color)
-				.attr('opacity', 0.2);
+			if (this.options.showArea) {
+				this.areaPaths[series] = this.chart.append('path')
+					.datum(this.options.data[series])
+					.attr('class', 'area')
+					.attr('d', this.areas[series])
+					.attr('fill', color)
+					.attr('opacity', 0.2);
+			}
 
 			// draw the points
 			if (this.options.showpoints) {
